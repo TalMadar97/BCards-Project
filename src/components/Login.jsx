@@ -4,8 +4,11 @@ import { passwordRegex } from "../config/regex";
 import axios from "axios";
 import { baseUrl } from "../config/api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -25,6 +28,13 @@ function Login() {
     onSubmit: async (values) => {
       try {
         const response = await axios.post(`${baseUrl}/users/login`, values);
+
+        const token = response.data;
+        if (token) {
+          localStorage.setItem("token", token);
+          navigate("/");
+        }
+
         console.log("Response Data:", response.data);
         toast.success("Login successful!", { position: "top-center" });
       } catch (error) {
