@@ -4,7 +4,7 @@ import { passwordRegex } from "../config/regex";
 import axios from "axios";
 import { baseUrl } from "../config/api";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
@@ -49,45 +49,54 @@ function Login() {
 
   return (
     <>
-      <h1>Login</h1>
+      <div className="container w-25">
+        <h1 className="display-4 my-2">Login</h1>
 
-      <form onSubmit={formik.handleSubmit}>
-        <input
-          type="email"
-          autoComplete="on"
-          name="email"
-          placeholder="Email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-          onBlur={formik.handleBlur}
-        />
-        {formik.touched.email && formik.errors.email && (
-          <p className="text-danger">{formik.errors.email}</p>
-        )}
+        <form onSubmit={formik.handleSubmit}>
+          <div className="form-floating mb-3">
+            <input
+              type="email"
+              className="form-control"
+              autoComplete="on"
+              name="email"
+              placeholder="Email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="floatingInput">Email Address</label>
+            {formik.touched.email && formik.errors.email && (
+              <p className="text-danger">{formik.errors.email}</p>
+            )}
+          </div>
 
-        <br />
+          <div className="form-floating mb-3">
+            <input
+              className="form-control"
+              type="password"
+              autoComplete="on"
+              name="password"
+              placeholder="Password"
+              onChange={formik.handleChange}
+              value={formik.values.password}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="floatingInput">Password</label>
+            {formik.touched.password && formik.errors.password && (
+              <p className="text-danger">{formik.errors.password}</p>
+            )}
+          </div>
 
-        <input
-          type="password"
-          autoComplete="on"
-          name="password"
-          placeholder="Password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-          onBlur={formik.handleBlur}
-        />
-        {formik.touched.password && formik.errors.password && (
-          <p className="text-danger">{formik.errors.password}</p>
-        )}
-
-        <button
-          type="submit"
-          className="btn btn-dark"
-          disabled={!formik.dirty || !formik.isValid}
-        >
-          Login
-        </button>
-      </form>
+          <button
+            type="submit"
+            className="btn btn-primary w-100 mb-3"
+            disabled={!formik.dirty || !formik.isValid}
+          >
+            Login
+          </button>
+          <Link to="/register">Don't Have An Account? Register</Link>
+        </form>
+      </div>
     </>
   );
 }
