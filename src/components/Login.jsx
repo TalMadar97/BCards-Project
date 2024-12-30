@@ -1,6 +1,9 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { passwordRegex } from "../config/regex";
+import axios from "axios";
+import { baseUrl } from "../config/api";
+import { toast } from "react-toastify";
 
 function Login() {
   const formik = useFormik({
@@ -19,8 +22,18 @@ function Login() {
           "Password must include one letter, one number, and one special character"
         ),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post(`${baseUrl}/users/login`, values);
+        console.log("Response Data:", response.data);
+        toast.success("Login successful!", { position: "top-center" });
+      } catch (error) {
+        console.error(
+          "Error:",
+          error.response ? error.response.data : error.message
+        );
+        toast.error("Login failed", { position: "top-center" });
+      }
     },
   });
 
