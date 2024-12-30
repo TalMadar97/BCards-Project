@@ -33,7 +33,7 @@ function Navbar() {
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" style={{ color: "black" }} href="#">
+            <a className="nav-link" style={{ color: "black" }} href="/login">
               Login
             </a>
           </li>
