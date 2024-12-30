@@ -2,9 +2,13 @@ import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { passwordRegex, phoneRegex } from "../config/regex";
+import axios, { all } from "axios";
+import { baseUrl } from "../config/api";
+import { toast } from "react-toastify";
 
 function Register() {
   const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -21,6 +25,7 @@ function Register() {
       street: "",
       houseNumber: "",
       zip: "",
+      isBusiness: false,
     },
     validationSchema: yup.object({
       firstName: yup
@@ -47,24 +52,60 @@ function Register() {
           "Password must include one letter, one number, and one special character"
         ),
     }),
-    onSubmit: (values) => {
-      checkUserExsis(values)
-        .then((res) => {
-          if (res.data.length) {
-            alert("Email Already Exsist, Please try Login");
-          } else {
-            addUser({ ...values, isAdmin: false })
-              .then((res) => {
-                navigate("/home");
-                localStorage.setItem("userId", JSON.stringify(res.data.id));
-              })
-              .catch((err) => console.log(err));
-          }
-        })
-        .catch((err) => console.log(err));
+    onSubmit: async (values) => {
+      try {
+        const payload = { ...values };
+
+        payload.name = {
+          first: values.firstName,
+          middle: values.middleName,
+          last: values.lastName,
+        };
+
+        payload.address = {
+          state: values.state,
+          country: values.country,
+          city: values.city,
+          street: values.street,
+          houseNumber: values.houseNumber,
+          zip: values.zip,
+        };
+
+        payload.image = {
+          url: values.imageUrl,
+          alt: values.imageAlt,
+        };
+        
+        // Remove not allowed fields for the API
+        delete payload.firstName;
+        delete payload.middleName;
+        delete payload.lastName;
+        delete payload.state;
+        delete payload.country;
+        delete payload.city;
+        delete payload.street;
+        delete payload.houseNumber;
+        delete payload.zip;
+        delete payload.imageUrl;
+        delete payload.imageAlt;
+
+        const response = await axios.post(`${baseUrl}/users`, payload);
+        if (response.data) {
+          console.log("Response Data:", response.data);
+          toast.success("Register successful!", { position: "top-center" });
+          navigate("/login");
+        }
+      } catch (error) {
+        console.error(
+          "Error:",
+          error.response ? error.response.data : error.message
+        );
+        toast.error("Register failed", { position: "top-center" });
+      }
     },
   });
 
+  console.log(formik.isBusiness);
   return (
     <>
       <div className="container w-25">
@@ -86,7 +127,6 @@ function Register() {
               <p className="text-danger">{formik.errors.firstName}</p>
             )}
           </div>
-
           {/* Middle Name */}
           <div className="form-floating mb-3">
             <input
@@ -100,7 +140,6 @@ function Register() {
             />
             <label htmlFor="middleName">Middle Name</label>
           </div>
-
           {/* Last Name */}
           <div className="form-floating mb-3">
             <input
@@ -117,7 +156,6 @@ function Register() {
               <p className="text-danger">{formik.errors.lastName}</p>
             )}
           </div>
-
           {/* Phone */}
           <div className="form-floating mb-3">
             <input
@@ -134,7 +172,6 @@ function Register() {
               <p className="text-danger">{formik.errors.phone}</p>
             )}
           </div>
-
           {/* Email */}
           <div className="form-floating mb-3">
             <input
@@ -151,7 +188,6 @@ function Register() {
               <p className="text-danger">{formik.errors.email}</p>
             )}
           </div>
-
           {/* Password */}
           <div className="form-floating mb-3">
             <input
@@ -168,7 +204,6 @@ function Register() {
               <p className="text-danger">{formik.errors.password}</p>
             )}
           </div>
-
           {/* Image URL */}
           <div className="form-floating mb-3">
             <input
@@ -182,7 +217,19 @@ function Register() {
             />
             <label htmlFor="imageUrl">Image URL</label>
           </div>
-
+          {/* Image Alt */}
+          <div className="form-floating mb-3">
+            <input
+              type="text"
+              className="form-control"
+              id="imageAlt"
+              placeholder="Image Alt"
+              value={formik.values.imageAlt}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="imageAlt">Image Alt</label>
+          </div>
           {/* Address Fields */}
           <div className="form-floating mb-3">
             <input
@@ -196,7 +243,6 @@ function Register() {
             />
             <label htmlFor="street">Street</label>
           </div>
-
           <div className="form-floating mb-3">
             <input
               type="text"
@@ -209,7 +255,6 @@ function Register() {
             />
             <label htmlFor="city">City</label>
           </div>
-
           <div className="form-floating mb-3">
             <input
               type="text"
@@ -222,7 +267,6 @@ function Register() {
             />
             <label htmlFor="state">State</label>
           </div>
-
           <div className="form-floating mb-3">
             <input
               type="text"
@@ -235,7 +279,6 @@ function Register() {
             />
             <label htmlFor="country">Country</label>
           </div>
-
           <div className="form-floating mb-3">
             <input
               type="text"
@@ -248,7 +291,6 @@ function Register() {
             />
             <label htmlFor="houseNumber">House Number</label>
           </div>
-
           <div className="form-floating mb-3">
             <input
               type="text"
@@ -262,6 +304,20 @@ function Register() {
             <label htmlFor="zip">Zip Code</label>
           </div>
 
+          <div className="form-check mb-3">
+            <input
+              type="checkbox"
+              id="isBusiness"
+              name="isBusiness"
+              className="form-check-input"
+              checked={formik.values.isBusiness}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="isBusiness" className="form-check-label">
+              Is Business
+            </label>
+          </div>
           <button
             type="submit"
             className="btn btn-primary w-100 mb-3"
