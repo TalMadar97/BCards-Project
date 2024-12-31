@@ -3,14 +3,13 @@
 @import "react-toastify/dist/ReactToastify.css";
 
 .nav-link {
-  transition: color 0.3s ease; /* Smooth transition for color change */
+  transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: black !important; /* Force the text color to black on hover */
+  color: black !important;
 }
 
-/* Ensure the default color of the links is white (if not already) */
 .nav-link {
   color: whitesmoke !important;
 }
