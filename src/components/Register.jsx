@@ -343,6 +343,24 @@ function Register() {
           </div>
         </div>
 
+        {/* Row 6: Is Business Checkbox */}
+        <div className="row mb-3">
+          <div className="col-md-12">
+            <div className="form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="isBusiness"
+                checked={formik.values.isBusiness}
+                onChange={formik.handleChange}
+              />
+              <label className="form-check-label" htmlFor="isBusiness">
+                Is Business
+              </label>
+            </div>
+          </div>
+        </div>
+
         <button
           type="submit"
           className="btn btn-primary w-100 mb-3"
