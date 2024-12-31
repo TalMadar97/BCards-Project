@@ -1,3 +1,5 @@
+import WorldMap from "./WorldMap";
+
 function AboutMe() {
   return (
     <div className="container py-5">
@@ -46,6 +48,10 @@ function AboutMe() {
       </p>
       <p>Phone: 050-4474131</p>
       <p>Address: Ganei Tikva, Israel</p>
+
+      
+
+      <WorldMap />
     </div>
   );
 }

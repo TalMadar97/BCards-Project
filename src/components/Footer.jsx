@@ -3,7 +3,7 @@ function Footer() {
     <footer className="bg-primary text-white py-2 mt-5">
       <div className="container d-flex justify-content-between align-items-center">
         <div className="d-flex flex-column">
-          <p className="mb-0 fs-5">&copy; 2024 B-Cards. All rights reserved.</p>
+          <p className="mb-0 fs-5">&copy; 2025 B-Cards. All rights reserved.</p>
           <p className="fs-5 my-2">Designed and developed by Tal Madar</p>
         </div>
 
