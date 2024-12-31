@@ -7,6 +7,8 @@ import { ToastContainer } from "react-toastify";
 import Register from "./components/Register";
 import Footer from "./components/Footer";
 import AboutMe from "./components/AboutMe";
+import PageNotFound from "./components/PageNotFound";
+import Home from "./components/Home";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,15 +19,16 @@ function App() {
         <Navbar />
         <main className="flex-grow-1">
           <Routes>
-            {/* <Route path="/" element={} /> */}
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/aboutme" element={<AboutMe />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </main>
         <ToastContainer />
-        <Footer />
       </Router>
+      <Footer />
     </>
   );
 }

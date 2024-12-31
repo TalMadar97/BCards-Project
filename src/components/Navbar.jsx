@@ -2,7 +2,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-primary shadow-sm">
       <div className="container">
-        <a className="navbar-brand fw-bold text-white fs-1 me-5" href="#">
+        <a className="navbar-brand fw-bold text-white fs-1 me-5" href="/">
           B-Cards
         </a>
         <button
