@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import { ToastContainer } from "react-toastify";
 import Register from "./components/Register";
 import Footer from "./components/Footer";
+import AboutMe from "./components/AboutMe";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +19,7 @@ function App() {
           {/* <Route path="/" element={} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/aboutme" element={<AboutMe />} />
         </Routes>
       </Router>
       <ToastContainer />
