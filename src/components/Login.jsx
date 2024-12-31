@@ -50,7 +50,7 @@ function Login() {
   return (
     <>
       <div className="container w-25">
-        <h1 className="display-4 my-2">Login</h1>
+        <h1 className="display-4 my-4 text-center">Login</h1>
 
         <form onSubmit={formik.handleSubmit}>
           <div className="form-floating mb-3">
