@@ -15,15 +15,17 @@ function App() {
     <>
       <Router>
         <Navbar />
-        <Routes>
-          {/* <Route path="/" element={} /> */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/aboutme" element={<AboutMe />} />
-        </Routes>
+        <main className="flex-grow-1">
+          <Routes>
+            {/* <Route path="/" element={} /> */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/aboutme" element={<AboutMe />} />
+          </Routes>
+        </main>
+        <ToastContainer />
+        <Footer />
       </Router>
-      <ToastContainer />
-      <Footer />
     </>
   );
 }
