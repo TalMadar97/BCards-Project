@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import { ToastContainer } from "react-toastify";
 import Register from "./components/Register";
+import Footer from "./components/Footer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,6 +21,7 @@ function App() {
         </Routes>
       </Router>
       <ToastContainer />
+      <Footer />
     </>
   );
 }
