@@ -1,3 +1,16 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css";
 @import "react-toastify/dist/ReactToastify.css";
+
+.nav-link {
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.nav-link:hover {
+  color: black !important; /* Force the text color to black on hover */
+}
+
+/* Ensure the default color of the links is white (if not already) */
+.nav-link {
+  color: whitesmoke !important;
+}
