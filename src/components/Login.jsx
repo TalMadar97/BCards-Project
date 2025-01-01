@@ -2,9 +2,12 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { passwordRegex } from "../config/regex";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import { baseUrl } from "../config/api";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+
+import cacheUtils from "../utils/cache";
 
 function Login() {
   const navigate = useNavigate();
@@ -31,7 +34,9 @@ function Login() {
 
         const token = response.data;
         if (token) {
-          localStorage.setItem("token", token);
+          cacheUtils.setToken(token);
+          const user = jwtDecode(token);
+          cacheUtils.setUser(user);
           navigate("/");
         }
 
