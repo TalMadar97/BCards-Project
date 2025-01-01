@@ -1,4 +1,9 @@
+import cacheUtils from "../utils/cache";
+
 function Navbar() {
+  const user = cacheUtils.getUser();
+  console.log('user : ', user);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-primary shadow-sm">
       <div className="container">
@@ -41,18 +46,21 @@ function Navbar() {
               Search
             </button>
           </form>
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link text-white me-3 fs-5" href="/login">
-                Login
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link text-white fs-5" href="/register">
-                Register
-              </a>
-            </li>
-          </ul>
+          {!user && (
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              
+              <li className="nav-item">
+                <a className="nav-link text-white me-3 fs-5" href="/login">
+                  Login
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link text-white fs-5" href="/register">
+                  Register
+                </a>
+              </li>
+            </ul>
+            )}
         </div>
       </div>
     </nav>
