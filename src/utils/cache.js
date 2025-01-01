@@ -19,9 +19,14 @@ export function setToken(token) {
   return localStorage.setItem('token', token);
 }
 
+export function clear() {
+    localStorage.clear();
+}
+
 export default {
     getUser,
     setUser,
     getToken,
     setToken,
+    clear,
 }

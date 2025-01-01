@@ -1,8 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import cacheUtils from "../utils/cache";
 
 function Navbar() {
+  const navigate = useNavigate();
+
   const user = cacheUtils.getUser();
   console.log('user : ', user);
+
+  const logout = () => {
+    cacheUtils.clear();
+    navigate('/');
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-primary shadow-sm">
@@ -29,11 +37,13 @@ function Navbar() {
                 About
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link text-white fs-3" href="#">
-                Favorites
-              </a>
-            </li>
+            {user && (
+              <li className="nav-item">
+                <a className="nav-link text-white fs-3" href="#">
+                  Favorites
+                </a>
+              </li>
+            )}
           </ul>
           <form className="d-flex">
             <input
@@ -48,7 +58,6 @@ function Navbar() {
           </form>
           {!user && (
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              
               <li className="nav-item">
                 <a className="nav-link text-white me-3 fs-5" href="/login">
                   Login
@@ -60,7 +69,16 @@ function Navbar() {
                 </a>
               </li>
             </ul>
-            )}
+          )}
+          {user && (
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <button className="nav-link text-white me-3 fs-5" onClick={logout}>
+                  Logout
+                </button>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </nav>
