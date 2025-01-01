@@ -1,4 +1,6 @@
+import { useState } from "react";
 import CardsList from "./CardsList";
+import Pagination from "./Pagination";
 const cards = [
   {
     _id: "665b395af9d3ea58f6f36573",
@@ -800,9 +802,25 @@ const cards = [
 ];
 
 function Home() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 6;
+
+  // Calculate the current cards to display
+  const startIndex = (currentPage - 1) * cardsPerPage;
+  const currentCards = cards.slice(startIndex, startIndex + cardsPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <>
-      <CardsList cards={cards} />
+      <CardsList cards={currentCards} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(cards.length / cardsPerPage)}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 }

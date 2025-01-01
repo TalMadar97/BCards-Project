@@ -1,5 +1,4 @@
 import Card from "./Card";
-import Pagination from "./Pagination";
 
 function CardsList({ cards }) {
   return (
@@ -21,7 +20,6 @@ function CardsList({ cards }) {
             image={card.image}
           />
         ))}
-        <Pagination />
       </div>
     </>
   );
