@@ -1,6 +1,7 @@
 import React from "react";
 import IconButton from "./IconButton";
 import { stringifyAddress } from "../utils/strings";
+import AddressMap from "./AddressMap";
 
 function Card(props) {
   const image = () => {
@@ -41,7 +42,16 @@ function Card(props) {
       {props.email && <p>Email: {props.email}</p>}
       {props.phone && <p>Phone: {props.phone}</p>}
       {props.web && <p>Website: {props.web}</p>}
-      {props.address && <p>Address: {stringifyAddress(props.address)}</p>}
+      {props.address && (
+        <>
+          <p>Address: {stringifyAddress(props.address)}</p>
+          <AddressMap
+            address={
+              "3828 Piermont Dr, Albuquerque, New Mexico 87104, United States"
+            }
+          />
+        </>
+      )}
       <div>
         <IconButton iconClass="fa-phone" />
       </div>
