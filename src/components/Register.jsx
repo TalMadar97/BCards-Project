@@ -327,6 +327,7 @@ function Register() {
               <label htmlFor="houseNumber">House Number</label>
             </div>
           </div>
+          
           <div className="col-md-6">
             <div className="form-floating mb-3">
               <input
