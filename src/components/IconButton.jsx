@@ -36,12 +36,4 @@ IconButton.propTypes = {
   style: PropTypes.object, // Additional styles for the button
 };
 
-IconButton.defaultProps = {
-  onClick: () => {},
-  label: "Icon Button",
-  size: "20px",
-  color: "#000",
-  style: {},
-};
-
 export default IconButton;
