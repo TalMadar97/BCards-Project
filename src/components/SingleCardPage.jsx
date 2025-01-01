@@ -44,6 +44,10 @@ function SingleCardPage() {
         subtitle={card.subtitle}
         description={card.description}
         image={card.image}
+        email={card.email}
+        phone={card.phone}
+        web={card.web}
+        address={card.address}
       />
     </>
   );
