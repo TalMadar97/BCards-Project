@@ -3,7 +3,7 @@ import Card from "./Card";
 function CardsList({ cards }) {
   return (
     <>
-      <div className="text-center mb-4">
+      <div className="text-center mb-4 my-4">
         <h1>B-cards</h1>
         <p className="text-center mb-4">
           Here you can find business cards from all categories
