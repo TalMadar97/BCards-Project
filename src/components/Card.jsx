@@ -10,9 +10,10 @@ function Card(props) {
         src={props.image?.url}
         alt={props.image?.alt}
         style={{
-          width: "250px",
-          height: "200px",
+          width: "100%",
+          height: "250px",
           borderRadius: "5px",
+          objectFit: "cover",
         }}
       />
     );
@@ -33,19 +34,22 @@ function Card(props) {
   };
 
   return (
-    <div className="container" style={{ textAlign: "center", padding: "16px" }}>
-      {image()}
-      <h2>{props.title}</h2>
-      <h3>{props.subtitle}</h3>
-      <p>{props.description}</p>
-      {props.email && <p>Email: {props.email}</p>}
-      {props.phone && <p>Phone: {props.phone}</p>}
-      {props.web && <p>Website: {props.web}</p>}
-      {props.address && <p>Address: {stringifyAddress(props.address)}</p>}
-      <div>
-        <IconButton iconClass="fa-phone" />
+    <>
+      
+      <div className="card p-3">
+        {image()}
+        <h2 className="card-title">{props.title}</h2>
+        <h3 className="card-subtitle text-muted">{props.subtitle}</h3>
+        <p className="card-text">{props.description}</p>
+        {props.email && <p>Email: {props.email}</p>}
+        {props.phone && <p>Phone: {props.phone}</p>}
+        {props.web && <p>Website: {props.web}</p>}
+        {props.address && <p>Address: {stringifyAddress(props.address)}</p>}
+        <div>
+          <IconButton iconClass="fa-phone" />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -38,17 +38,19 @@ function SingleCardPage() {
 
   return (
     <>
-      <Card
-        key={id}
-        title={card.title}
-        subtitle={card.subtitle}
-        description={card.description}
-        image={card.image}
-        email={card.email}
-        phone={card.phone}
-        web={card.web}
-        address={card.address}
-      />
+      <div className="single-card-page">
+        <Card
+          key={id}
+          title={card.title}
+          subtitle={card.subtitle}
+          description={card.description}
+          image={card.image}
+          email={card.email}
+          phone={card.phone}
+          web={card.web}
+          address={card.address}
+        />
+      </div>
     </>
   );
 }
