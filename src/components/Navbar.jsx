@@ -16,7 +16,10 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light shadow-sm">
       <div className="container">
-        <a className="nav-link navbar-brand fw-bold text-white fs-1 me-5" href="/">
+        <a
+          className="nav-link navbar-brand fw-bold text-white fs-1 me-5"
+          href="/"
+        >
           B-Cards
         </a>
         <button
@@ -57,9 +60,9 @@ function Navbar() {
               Search
             </button>
           </form>
-
-          <DarkModeButton />
-
+          <div className="mx-5">
+            <DarkModeButton />
+          </div>
           {!user && (
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
