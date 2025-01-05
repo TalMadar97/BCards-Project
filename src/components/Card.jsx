@@ -39,7 +39,7 @@ function Card(props) {
       <div className="card p-3">
         {image()}
         <h2 className="card-title">{props.title}</h2>
-        <h3 className="card-subtitle text-muted">{props.subtitle}</h3>
+        <h3 className="card-subtitle">{props.subtitle}</h3>
         <p className="card-text">{props.description}</p>
         {props.email && <p>Email: {props.email}</p>}
         {props.phone && <p>Phone: {props.phone}</p>}

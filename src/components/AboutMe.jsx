@@ -2,7 +2,7 @@ import WorldMap from "./WorldMap";
 
 function AboutMe() {
   return (
-    <div className="container py-5">
+    <div className="container py-5 text">
       <h1 className="mb-4">About Us</h1>
       <p>
         Welcome to BCard, your ultimate solution for creating, browsing, and
@@ -48,8 +48,6 @@ function AboutMe() {
       </p>
       <p>Phone: 050-4474131</p>
       <p>Address: Ganei Tikva, Israel</p>
-
-      
 
       <WorldMap />
     </div>

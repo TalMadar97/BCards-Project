@@ -104,7 +104,7 @@ function Register() {
 
   return (
     <div className="container w-md-50">
-      <h4 className="display-4 my-4 text-center">Register</h4>
+      <h4 className="text display-4 my-4 text-center">Register</h4>
       <form onSubmit={formik.handleSubmit}>
         {/* Row 1: First Name and Middle Name */}
         <div className="row">
@@ -327,7 +327,7 @@ function Register() {
               <label htmlFor="houseNumber">House Number</label>
             </div>
           </div>
-          
+
           <div className="col-md-6">
             <div className="form-floating mb-3">
               <input
@@ -355,7 +355,7 @@ function Register() {
                 checked={formik.values.isBusiness}
                 onChange={formik.handleChange}
               />
-              <label className="form-check-label" htmlFor="isBusiness">
+              <label className="text form-check-label" htmlFor="isBusiness">
                 Is Business
               </label>
             </div>
@@ -364,12 +364,14 @@ function Register() {
 
         <button
           type="submit"
-          className="btn btn-primary w-100 mb-3"
+          className="w-100 mb-3"
           disabled={!formik.dirty || !formik.isValid}
         >
           Register
         </button>
-        <Link to="/login">Already have an account? Login</Link>
+        <Link to="/login" className="text">
+          Already have an account? Login
+        </Link>
       </form>
     </div>
   );

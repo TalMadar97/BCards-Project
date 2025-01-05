@@ -55,7 +55,7 @@ function Login() {
   return (
     <>
       <div className="container w-25">
-        <h1 className="display-4 my-4 text-center">Login</h1>
+        <h1 className="text display-4 my-4 text-center">Login</h1>
 
         <form onSubmit={formik.handleSubmit}>
           <div className="form-floating mb-3">
@@ -94,12 +94,14 @@ function Login() {
 
           <button
             type="submit"
-            className="btn btn-primary w-100 mb-3"
+            className="w-100 mb-3"
             disabled={!formik.dirty || !formik.isValid}
           >
             Login
           </button>
-          <Link to="/register">Don't Have An Account? Register</Link>
+          <Link to="/register" className="text">
+            Don't Have An Account? Register
+          </Link>
         </form>
       </div>
     </>
