@@ -2,6 +2,16 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css";
 @import "react-toastify/dist/ReactToastify.css";
 
+:root {
+  --color-primary: #007bff;
+  --color-secondary: whitesmoke;
+  --color-tertiary: black;
+  --color-background: white;
+  --color-text: black;
+  --color-success: #32cd32;
+  --color-error: #ff6347;
+}
+
 .nav-link {
   transition: color 0.3s ease;
 }
@@ -37,9 +47,8 @@ main {
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-
-
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .card-title {
@@ -67,8 +76,6 @@ main {
   transform: scale(1.03); /* Slightly smaller zoom */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Softer shadow on hover */
   background-color: rgba(255, 255, 255, 0.97); /* Very subtle transparency */
-
-
 }
 
 /*Single Cards Styles */
@@ -198,7 +205,7 @@ main {
   padding: 10px;
   border-radius: 50%;
   font-size: 1.5rem;
-  color: var(--icon-color, black);
+  color: var(--color-text, black);
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
@@ -207,9 +214,13 @@ main {
 }
 
 .dark-mode {
-  background-color: #f0f0f0;
-  color: #333;
-  --icon-color: #333;
+  --color-primary: rgb(31, 41, 55);
+  --color-secondary: rgb(51, 65, 85);
+  --color-tertiary: whitesmoke;
+  --color-background: rgb(51, 65, 85);
+  --color-text: whitesmoke;
+  --color-success: #32cd32;
+  --color-error: #ff6347;
 }
 
 .dark-mode .dark-mode-btn {
