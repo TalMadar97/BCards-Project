@@ -35,7 +35,6 @@ function Card(props) {
 
   return (
     <>
-      
       <div className="card p-3">
         {image()}
         <h2 className="card-title">{props.title}</h2>
@@ -46,7 +45,10 @@ function Card(props) {
         {props.web && <p>Website: {props.web}</p>}
         {props.address && <p>Address: {stringifyAddress(props.address)}</p>}
         <div>
-          <IconButton iconClass="fa-phone" />
+          <IconButton iconClass="fa-solid fa-phone" />
+        </div>
+        <div>
+          <IconButton iconClass="fa-regular fa-heart" />
         </div>
       </div>
     </>

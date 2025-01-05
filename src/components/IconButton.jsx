@@ -19,7 +19,7 @@ function IconButton({ iconClass, onClick, label, size, color, style }) {
       aria-label={label}
     >
       <i
-        className={`fa-solid ${iconClass}`}
+        className={`${iconClass}`}
         style={{ fontSize: size, color: color }}
       />
     </button>
