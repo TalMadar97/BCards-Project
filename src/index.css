@@ -186,3 +186,32 @@ main {
   font-size: 18px;
   color: #721c24;
 }
+
+/* Dark Mode Button */
+.dark-mode-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: var(--icon-color, black);
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.dark-mode-btn:hover {
+  transform: scale(1.1);
+}
+
+.dark-mode {
+  background-color: #f0f0f0;
+  color: #333;
+  --icon-color: #333;
+}
+
+.dark-mode .dark-mode-btn {
+  color: #f0f0f0;
+}

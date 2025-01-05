@@ -1,16 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import cacheUtils from "../utils/cache";
+import DarkModeButton from "./DarkModeButton";
 
 function Navbar() {
   const navigate = useNavigate();
 
   const user = cacheUtils.getUser();
-  console.log('user : ', user);
+  console.log("user : ", user);
 
   const logout = () => {
     cacheUtils.clear();
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-primary shadow-sm">
@@ -56,6 +57,9 @@ function Navbar() {
               Search
             </button>
           </form>
+
+          <DarkModeButton />
+
           {!user && (
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -73,7 +77,10 @@ function Navbar() {
           {user && (
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <button className="nav-link text-white me-3 fs-5" onClick={logout}>
+                <button
+                  className="nav-link text-white me-3 fs-5"
+                  onClick={logout}
+                >
                   Logout
                 </button>
               </li>

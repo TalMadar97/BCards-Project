@@ -23,10 +23,20 @@ export function clear() {
     localStorage.clear();
 }
 
+export function getDarkMode() {
+    return localStorage.getItem("darkMode") === "true";
+}
+
+export function setDarkMode(darkMode) {
+  localStorage.setItem("darkMode", darkMode); // Save mode in localStorage
+}
+
 export default {
     getUser,
     setUser,
     getToken,
     setToken,
     clear,
+    getDarkMode,
+    setDarkMode,
 }
