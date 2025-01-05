@@ -68,6 +68,7 @@ button:disabled {
 
 main {
   flex: 1;
+  background-color: var(--color-card-background);
 }
 /* Cards Styles */
 
@@ -248,7 +249,7 @@ main {
   --color-primary: rgb(31, 41, 55);
   --color-secondary: rgb(51, 65, 85);
   --color-tertiary: whitesmoke;
-  --color-background: rgb(51, 65, 85);
+  --color-background: var(--color-secondary);
   --color-text: whitesmoke;
   --color-text-primary: whitesmoke;
   --color-text-secondary: #bbb;
