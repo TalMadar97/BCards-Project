@@ -11,6 +11,7 @@
   --color-text-primary: black;
   --color-text-secondary: #666;
   --color-text-tertiary: #999;
+  --color-text-hover: var(--color-tertiary);
   --color-success: #32cd32;
   --color-error: #ff6347;
   --color-card-background: var(--color-secondary);
@@ -29,21 +30,12 @@ nav {
   background-color: var(--color-primary) !important;
 }
 
-nav * {
-  color: var(--color-secondary) !important;
-  background-color: var(--color-primary) !important;
-}
-
 .nav-link {
   transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: var(--color-tertiary) !important;
-}
-
-.nav-link {
-  color: var(--color-secondary) !important;
+  color: var(--color-text-hover) !important;
 }
 
 footer {
@@ -261,6 +253,7 @@ main {
   --color-text-primary: whitesmoke;
   --color-text-secondary: #bbb;
   --color-text-tertiary: #999;
+  --color-text-hover: var(--color-text-secondary);
   --color-success: #32cd32;
   --color-error: #ff6347;
   --color-card-background: var(--color-primary);
