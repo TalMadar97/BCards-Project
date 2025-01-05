@@ -38,8 +38,14 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
           onClick={() => onPageChange(number)}
           style={{
             padding: "8px 16px",
-            backgroundColor: number === currentPage ? "#007bff" : "#f0f0f0",
-            color: number === currentPage ? "#fff" : "#000",
+            backgroundColor:
+              number === currentPage
+                ? "var(--color-primary)"
+                : "var(--color-secondary)",
+            color:
+              number === currentPage
+                ? "var(--color-text-primary)"
+                : "var(--color-text-secondary)",
             border: "1px solid #ddd",
             borderRadius: "4px",
             cursor: "pointer",
