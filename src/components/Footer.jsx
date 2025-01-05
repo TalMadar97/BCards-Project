@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="text-white py-2 mt-5">
+    <footer className="text-white py-2">
       <div className="container d-flex justify-content-between align-items-center">
         <div className="d-flex flex-column">
           <p className="mb-0 fs-5">&copy; 2025 B-Cards. All rights reserved.</p>
