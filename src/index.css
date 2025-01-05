@@ -68,7 +68,7 @@ button:disabled {
 
 main {
   flex: 1;
-  background-color: var(--color-card-background);
+  background-color: var(--color-background);
 }
 /* Cards Styles */
 
