@@ -3,6 +3,7 @@ import IconButton from "./IconButton";
 import { stringifyAddress } from "../utils/strings";
 import { getUser } from "../utils/cache";
 import { isLiked } from "../utils/cards";
+import { likeCard } from "../services/api";
 
 function Card(props) {
   const user = getUser();
@@ -44,9 +45,14 @@ function Card(props) {
       );
     }
 
-    return <IconButton iconClass="fa-regular fa-heart " />;
+    return (
+      <IconButton
+        iconClass="fa-regular fa-heart"
+        onClick={() => likeCard(userId, props.id)}
+      />
+    );
   };
-  
+
   return (
     <>
       <div className="card p-3">

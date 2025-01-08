@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 import { baseUrl } from "../config/api";
 import Loading from "./Loading";
 
-import { getMyCards } from "../utils/api";
+import { getMyCards } from "../services/api";
 import { getToken, getUser } from "../utils/cache";
 
 function Favourites() {
