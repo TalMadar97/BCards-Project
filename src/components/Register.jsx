@@ -36,8 +36,9 @@ function Register() {
       phone: yup
         .string()
         .required("Phone number is required")
-        .matches(phoneRegex, "Phone number must be exactly 10 digits")
-        .length(10, "Phone number must be exactly 10 digits"),
+        .matches(phoneRegex, "Phone number must contain only digits")
+        .min(9, "Phone number must be at least 9 digits")
+        .max(11, "Phone number must be at most 11 digits"),
       email: yup
         .string()
         .required("Email must be a valid mail")
