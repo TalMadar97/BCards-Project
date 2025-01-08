@@ -47,7 +47,12 @@ function Favourites() {
 
   return (
     <>
-    
+      <div className="text text-center mb-4 my-4">
+        <h1>Favourties</h1>
+        <p className="text-center mb-4">
+          Here you can find all your Favourites cards from all categories
+        </p>
+      </div>
       <CardsList cards={currentCards} refreshCards={fetchCards} />
       <Pagination
         currentPage={currentPage}
