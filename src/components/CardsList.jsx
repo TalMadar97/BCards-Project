@@ -20,6 +20,7 @@ function CardsList({ cards }) {
                 subtitle={card.subtitle}
                 description={card.description}
                 image={card.image}
+                likes={card.likes}
               />
             </div>
           ))}

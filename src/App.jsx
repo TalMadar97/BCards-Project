@@ -13,8 +13,6 @@ import SingleCardPage from "./components/SingleCardPage";
 import Favourites from "./components/favourites";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <Router>

@@ -1,8 +1,13 @@
 import React from "react";
 import IconButton from "./IconButton";
 import { stringifyAddress } from "../utils/strings";
+import { getUser } from "../utils/cache";
+import { isLiked } from "../utils/cards";
 
 function Card(props) {
+  const user = getUser();
+  const userId = user?._id;
+
   const image = () => {
     const img = (
       <img
@@ -32,7 +37,16 @@ function Card(props) {
 
     return <>{img}</>;
   };
+  const likeButton = () => {
+    if (isLiked(userId, props?.likes)) {
+      return (
+        <IconButton iconClass="fa-solid fa-heart" style={{ color: "red" }} />
+      );
+    }
 
+    return <IconButton iconClass="fa-regular fa-heart " />;
+  };
+  
   return (
     <>
       <div className="card p-3">
@@ -46,9 +60,7 @@ function Card(props) {
         {props.address && <p>Address: {stringifyAddress(props.address)}</p>}
         <div>
           <IconButton iconClass="fa-solid fa-phone" />
-        </div>
-        <div>
-          <IconButton iconClass="fa-regular fa-heart" />
+          {likeButton()}
         </div>
       </div>
     </>
