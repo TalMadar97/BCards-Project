@@ -3,7 +3,7 @@ import IconButton from "./IconButton";
 import { stringifyAddress } from "../utils/strings";
 import { getUser } from "../utils/cache";
 import { isLiked } from "../utils/cards";
-import { likeCard } from "../services/api";
+import { likeCard, unlikeCard } from "../services/api";
 
 function Card(props) {
   const user = getUser();
@@ -41,14 +41,18 @@ function Card(props) {
   const likeButton = () => {
     if (isLiked(userId, props?.likes)) {
       return (
-        <IconButton iconClass="fa-solid fa-heart" style={{ color: "red" }} />
+        <IconButton
+          iconClass="fa-solid fa-heart"
+          style={{ color: "red" }}
+          onClick={() => unlikeCard(props.id)}
+        />
       );
     }
 
     return (
       <IconButton
         iconClass="fa-regular fa-heart"
-        onClick={() => likeCard(userId, props.id)}
+        onClick={() => likeCard(props.id)}
       />
     );
   };

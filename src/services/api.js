@@ -15,7 +15,30 @@ export async function getMyCards(userId) {
   }
 }
 
-export async function likeCard(userId, cardId) {
+export async function likeCard(cardId) {
+  try {
+    const token = cacheUtils.getToken();
+    if (!token) {
+      throw new Error("Unauthorized: No token found.");
+    }
+    const user = cacheUtils.getUser();
+    if (!user?._id) {
+      throw new Error("No user found.");
+    }
+
+    const url = `${baseUrl}/cards/${cardId}`;
+    const body = { likes: [user._id] };
+    const config = { headers: headers(token) };
+
+    const response = await axios.patch(url, body, config);
+
+    return response.data;
+  } catch (error) {
+    console.error("Error liking the card:", error);
+    return null;
+  }
+}
+export async function unlikeCard(cardId) {
   try {
     const token = cacheUtils.getToken();
     if (!token) {
@@ -23,7 +46,7 @@ export async function likeCard(userId, cardId) {
     }
 
     const url = `${baseUrl}/cards/${cardId}`;
-    const body = { likes: [userId] };
+    const body = { likes: [] };
     const config = { headers: headers(token) };
 
     const response = await axios.patch(url, body, config);
@@ -35,4 +58,4 @@ export async function likeCard(userId, cardId) {
   }
 }
 
-export default { headers, getMyCards, likeCard };
+export default { headers, getMyCards, likeCard, unlikeCard };

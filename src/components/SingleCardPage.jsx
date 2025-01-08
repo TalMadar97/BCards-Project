@@ -41,6 +41,7 @@ function SingleCardPage() {
       <div className="single-card-page">
         <Card
           key={id}
+          id ={id}
           title={card.title}
           subtitle={card.subtitle}
           description={card.description}
