@@ -9,6 +9,7 @@ function CardsList({ cards, refreshCards }) {
             <div className="col-12 col-md-4 mb-4" key={index}>
               <Card
                 id={card._id}
+                userId={card.user_id}
                 title={card.title}
                 subtitle={card.subtitle}
                 description={card.description}

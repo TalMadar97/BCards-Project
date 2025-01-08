@@ -4,6 +4,7 @@ import { stringifyAddress } from "../utils/strings";
 import { getUser } from "../utils/cache";
 import { isLiked } from "../utils/cards";
 import { likeCard, unlikeCard } from "../services/api";
+import IconLink from "./icons/IconLink";
 
 function Card(props) {
   const user = getUser();
@@ -38,7 +39,7 @@ function Card(props) {
 
     return <>{img}</>;
   };
-  
+
   const likeButton = () => {
     if (!props.likes) {
       return <></>;
@@ -97,6 +98,12 @@ function Card(props) {
         <div>
           <IconButton iconClass="fa-solid fa-phone" />
           {likeButton()}
+          {props.userId === userId && (
+            <IconLink
+              iconClass="fa-solid fa-pen-to-square"
+              href={`/my-cards/${props.id}`}
+            />
+          )}
         </div>
       </div>
     </>
