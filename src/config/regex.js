@@ -1,2 +1,2 @@
 export const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=])/;
-export const phoneRegex = /^\d{10}$/;
+export const phoneRegex = /^[0-9]+$/;

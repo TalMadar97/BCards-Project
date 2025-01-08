@@ -11,6 +11,7 @@ import PageNotFound from "./components/PageNotFound";
 import Home from "./components/Home";
 import SingleCardPage from "./components/SingleCardPage";
 import Favourites from "./components/favourites";
+import MyCards from "./components/MyCards";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/aboutme" element={<AboutMe />} />
             <Route path="/favourites" element={<Favourites />} />
+            <Route path="/my-cards" element={<MyCards />} />
             <Route path="/cards/:id" element={<SingleCardPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>

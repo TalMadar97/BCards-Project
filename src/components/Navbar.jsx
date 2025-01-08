@@ -6,6 +6,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   const user = cacheUtils.getUser();
+  const isBusiness = user?.isBusiness;
 
   const logout = () => {
     cacheUtils.clear();
@@ -47,7 +48,15 @@ function Navbar() {
                 </a>
               </li>
             )}
+            {isBusiness && (
+              <li className="nav-item">
+                <a className="nav-link text-white fs-3 mx-3" href="/my-cards">
+                  My Cards
+                </a>
+              </li>
+            )}
           </ul>
+
           <form className="d-flex">
             <input
               className="form-control me-2 fs-5"

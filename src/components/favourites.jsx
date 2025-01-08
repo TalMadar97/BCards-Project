@@ -47,6 +47,7 @@ function Favourites() {
 
   return (
     <>
+    
       <CardsList cards={currentCards} refreshCards={fetchCards} />
       <Pagination
         currentPage={currentPage}
