@@ -43,7 +43,7 @@ function Navbar() {
             </li>
             {user && (
               <li className="nav-item">
-                <a className="nav-link text-white fs-3" href="#">
+                <a className="nav-link text-white fs-3" href="/favourites">
                   Favorites
                 </a>
               </li>
@@ -83,6 +83,7 @@ function Navbar() {
                 <button
                   className="nav-link text-white me-3 fs-5"
                   onClick={logout}
+                  
                 >
                   Logout
                 </button>

@@ -10,6 +10,7 @@ import AboutMe from "./components/AboutMe";
 import PageNotFound from "./components/PageNotFound";
 import Home from "./components/Home";
 import SingleCardPage from "./components/SingleCardPage";
+import Favourites from "./components/favourites";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,6 +25,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/aboutme" element={<AboutMe />} />
+            <Route path="/favourites" element={<Favourites />} />
             <Route path="/cards/:id" element={<SingleCardPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
