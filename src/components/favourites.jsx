@@ -6,7 +6,7 @@ import { baseUrl } from "../config/api";
 import Loading from "./Loading";
 
 import { getMyCards } from "../utils/api";
-import { getToken } from "../utils/cache";
+import { getToken, getUser } from "../utils/cache";
 
 function Favourites() {
   const [cards, setCards] = useState([]);
@@ -15,16 +15,15 @@ function Favourites() {
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 9;
 
-  const token = getToken();
-  
+  const user = getUser();
+
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await getMyCards(token);
-        setCards(response.data);
+        const response = await getMyCards(user?._id);
+        setCards(response);
       } catch (error) {
         console.error(error);
-
         setCards([]);
       } finally {
         setLoading(false);

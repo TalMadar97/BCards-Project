@@ -13,10 +13,11 @@ function headers(token) {
   return headers;
 }
 
-export function getMyCards(token) {
-  return axios.get(`${baseUrl}/my-cards`, {
-    headers: headers(token),
-  });
+export async function getMyCards(userId) {
+  let response = await axios.get(`${baseUrl}/cards`);
+  let cards = response.data;
+  cards = cards.filter((card) => card.likes.includes(userId));
+  return cards;
 }
 
 export default { headers, getMyCards };
