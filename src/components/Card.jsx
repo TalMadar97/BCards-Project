@@ -49,17 +49,38 @@ function Card(props) {
         <IconButton
           iconClass="fa-solid fa-heart"
           style={{ color: "red" }}
-          onClick={() => unlikeCard(props.id)}
+          onClick={unLikeAndRefresh}
         />
       );
     }
 
     return (
-      <IconButton
-        iconClass="fa-regular fa-heart"
-        onClick={() => likeCard(props.id)}
-      />
+      <IconButton iconClass="fa-regular fa-heart" onClick={likeAndRefresh} />
     );
+  };
+
+  const likeAndRefresh = async () => {
+    try {
+      await likeCard(props.id);
+
+      if (props.refreshCards) {
+        await props.refreshCards();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const unLikeAndRefresh = async () => {
+    try {
+      await unlikeCard(props.id);
+
+      if (props.refreshCards) {
+        await props.refreshCards();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

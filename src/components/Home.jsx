@@ -12,20 +12,19 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 9;
 
+  const fetchCards = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/cards`);
+      setCards(response.data);
+    } catch (error) {
+      console.error(error);
+      setCards([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        const response = await axios.get(`${baseUrl}/cards`);
-        setCards(response.data);
-      } catch (error) {
-        console.error(error);
-
-        setCards([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchCards();
   }, []);
 
@@ -43,7 +42,7 @@ function Home() {
 
   return (
     <>
-      <CardsList cards={currentCards} />
+      <CardsList cards={currentCards} refreshCards={fetchCards} />
       <Pagination
         currentPage={currentPage}
         totalPages={Math.ceil(cards.length / cardsPerPage)}

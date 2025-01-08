@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-function CardsList({ cards }) {
+function CardsList({ cards, refreshCards }) {
   return (
     <>
       <div className="text text-center mb-4 my-4">
@@ -21,6 +21,7 @@ function CardsList({ cards }) {
                 description={card.description}
                 image={card.image}
                 likes={card.likes}
+                refreshCards={refreshCards}
               />
             </div>
           ))}

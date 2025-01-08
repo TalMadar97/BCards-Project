@@ -17,19 +17,19 @@ function Favourites() {
 
   const user = getUser();
 
-  useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        const response = await getMyCards(user?._id);
-        setCards(response);
-      } catch (error) {
-        console.error(error);
-        setCards([]);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchCards = async () => {
+    try {
+      const response = await getMyCards(user?._id);
+      setCards(response);
+    } catch (error) {
+      console.error(error);
+      setCards([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchCards();
   }, []);
 
@@ -47,7 +47,7 @@ function Favourites() {
 
   return (
     <>
-      <CardsList cards={currentCards} />
+      <CardsList cards={currentCards} refreshCards={fetchCards} />
       <Pagination
         currentPage={currentPage}
         totalPages={Math.ceil(cards.length / cardsPerPage)}
