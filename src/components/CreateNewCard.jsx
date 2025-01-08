@@ -63,10 +63,7 @@ function CreateNewCard() {
         city: yup.string().required("City is required"),
         country: yup.string().required("Country is required"),
         street: yup.string().required("Street is required"),
-        houseNumber: yup
-          .string()
-          .required("house Number is required")
-          .min(1),
+        houseNumber: yup.string().required("house Number is required").min(1),
         zip: yup.number().required("Zip code is required"),
       }),
 
@@ -88,6 +85,8 @@ function CreateNewCard() {
             position: "top-center",
           });
           navigate("/my-cards");
+        } else {
+          toast.error("Failed to add card", { position: "top-center" });
         }
       } catch (error) {
         console.error(
