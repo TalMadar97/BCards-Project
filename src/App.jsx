@@ -13,6 +13,7 @@ import SingleCardPage from "./components/SingleCardPage";
 import Favourites from "./components/favourites";
 import MyCards from "./components/MyCards";
 import CreateNewCard from "./components/CreateNewCard";
+import UpdateCard from "./components/UpdateCard";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/aboutme" element={<AboutMe />} />
             <Route path="/favourites" element={<Favourites />} />
             <Route path="/my-cards" element={<MyCards />} />
+            <Route path="/my-cards/:id" element={<UpdateCard />} />
             <Route path="/cards/create" element={<CreateNewCard />} />
             <Route path="/cards/:id" element={<SingleCardPage />} />
             <Route path="*" element={<PageNotFound />} />
