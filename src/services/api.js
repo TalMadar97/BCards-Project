@@ -58,4 +58,22 @@ export async function unlikeCard(cardId) {
   }
 }
 
-export default { headers, getMyCards, likeCard, unlikeCard };
+export async function createCard(payload) {
+  try {
+    const token = cacheUtils.getToken();
+    if (!token) {
+      throw new Error("Unauthorized: No token found.");
+    }
+
+    const url = `${baseUrl}/cards`;
+    const config = { headers: headers(token) };
+
+    const response = await axios.post(url, payload, config);
+    return response.data
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+export default { headers, getMyCards, likeCard, unlikeCard, createCard };

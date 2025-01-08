@@ -5,6 +5,7 @@ import { phoneRegex } from "../config/regex";
 import axios from "axios";
 import { baseUrl } from "../config/api";
 import { toast } from "react-toastify";
+import { createCard } from "../services/api";
 
 function CreateNewCard() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function CreateNewCard() {
       phone: "",
       email: "",
       web: "",
-      image: { imageUrl: "", imageAlt: "" },
+      image: { url: "", alt: "" },
       address: {
         street: "",
         city: "",
@@ -69,9 +70,9 @@ function CreateNewCard() {
     onSubmit: async (values) => {
       try {
         const payload = { ...values };
+        const card = await createCard(payload);
 
-        const response = await axios.post(`${baseUrl}/cards`, payload);
-        if (response.data) {
+        if (card) {
           toast.success("Card Was Added Successfuly", {
             position: "top-center",
           });
@@ -221,13 +222,13 @@ function CreateNewCard() {
                 <input
                   type="text"
                   className="form-control"
-                  id="imageUrl"
+                  id="image.url"
                   placeholder="Image URL"
-                  value={formik.values.image.imageUrl}
+                  value={formik.values.image?.url}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                <label htmlFor="imageUrl">Image URL</label>
+                <label htmlFor="image.url">Image URL</label>
               </div>
             </div>
             <div className="col-md-6">
@@ -235,13 +236,13 @@ function CreateNewCard() {
                 <input
                   type="text"
                   className="form-control"
-                  id="imageAlt"
+                  id="image.alt"
                   placeholder="Image Alt"
-                  value={formik.values.image.imageAlt}
+                  value={formik.values.image?.alt}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                <label htmlFor="imageAlt">Image Alt</label>
+                <label htmlFor="image.alt">Image Alt</label>
               </div>
             </div>
           </div>
@@ -294,13 +295,13 @@ function CreateNewCard() {
                 <input
                   type="text"
                   className="form-control"
-                  id="state"
+                  id="address.state"
                   placeholder="State"
                   value={formik.values.address?.state}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                <label htmlFor="state">State</label>
+                <label htmlFor="address.state">State</label>
               </div>
             </div>
             <div className="col-md-6">
