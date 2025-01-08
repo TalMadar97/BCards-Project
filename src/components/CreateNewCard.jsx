@@ -17,14 +17,15 @@ function CreateNewCard() {
       phone: "",
       email: "",
       web: "",
-      imageUrl: "",
-      imageAlt: "",
-      street: "",
-      city: "",
-      state: "",
-      country: "",
-      houseNumber: "",
-      zip: "",
+      image: { imageUrl: "", imageAlt: "" },
+      address: {
+        street: "",
+        city: "",
+        state: "",
+        country: "",
+        houseNumber: "",
+        zip: "",
+      },
     },
     validationSchema: yup.object({
       title: yup
@@ -57,29 +58,17 @@ function CreateNewCard() {
         .required("Email must be a valid mail")
         .email("Email is not valid"),
 
-      city: yup.string().required("City is required"),
-      country: yup.string().required("Country is required"),
-      street: yup.string().required("Street is required"),
-      houseNumber: yup.string().required("house Number is required").min(1),
-      zip: yup.number().required("Zip code is required"),
+      address: yup.object({
+        city: yup.string().required("City is required"),
+        country: yup.string().required("Country is required"),
+        street: yup.string().required("Street is required"),
+        houseNumber: yup.string().required("house Number is required").min(1),
+        zip: yup.number().required("Zip code is required"),
+      }),
     }),
     onSubmit: async (values) => {
       try {
         const payload = { ...values };
-
-        payload.address = {
-          street: values.street,
-          city: values.city,
-          state: values.state,
-          country: values.country,
-          houseNumber: values.houseNumber,
-          zip: values.zip,
-        };
-
-        payload.image = {
-          url: values.imageUrl,
-          alt: values.imageAlt,
-        };
 
         const response = await axios.post(`${baseUrl}/cards`, payload);
         if (response.data) {
@@ -234,7 +223,7 @@ function CreateNewCard() {
                   className="form-control"
                   id="imageUrl"
                   placeholder="Image URL"
-                  value={formik.values.imageUrl}
+                  value={formik.values.image.imageUrl}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
@@ -248,7 +237,7 @@ function CreateNewCard() {
                   className="form-control"
                   id="imageAlt"
                   placeholder="Image Alt"
-                  value={formik.values.imageAlt}
+                  value={formik.values.image.imageAlt}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
@@ -264,16 +253,19 @@ function CreateNewCard() {
                 <input
                   type="text"
                   className="form-control"
-                  id="street"
+                  id="address.street"
                   placeholder="Street"
-                  value={formik.values.street}
+                  value={formik.values.address?.street}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                <label htmlFor="street">Street</label>
-                {formik.touched.street && formik.errors.street && (
-                  <p className="text-danger">{formik.errors.street}</p>
-                )}
+                <label htmlFor="address.street">Street</label>
+                {formik.touched.address?.street &&
+                  formik.errors.address?.street && (
+                    <p className="text-danger">
+                      {formik.errors.address?.street}
+                    </p>
+                  )}
               </div>
             </div>
             <div className="col-md-6">
@@ -281,16 +273,17 @@ function CreateNewCard() {
                 <input
                   type="text"
                   className="form-control"
-                  id="city"
+                  id="address.city"
                   placeholder="City"
-                  value={formik.values.city}
+                  value={formik.values.address?.city}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                <label htmlFor="city">City</label>
-                {formik.touched.city && formik.errors.city && (
-                  <p className="text-danger">{formik.errors.city}</p>
-                )}
+                <label htmlFor="address.city">City</label>
+                {formik.touched.address?.city &&
+                  formik.errors.address?.city && (
+                    <p className="text-danger">{formik.errors.address?.city}</p>
+                  )}
               </div>
             </div>
           </div>
@@ -303,7 +296,7 @@ function CreateNewCard() {
                   className="form-control"
                   id="state"
                   placeholder="State"
-                  value={formik.values.state}
+                  value={formik.values.address?.state}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
@@ -315,16 +308,19 @@ function CreateNewCard() {
                 <input
                   type="text"
                   className="form-control"
-                  id="country"
+                  id="address.country"
                   placeholder="Country"
-                  value={formik.values.country}
+                  value={formik.values.address?.country}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                <label htmlFor="country">Country</label>
-                {formik.touched.country && formik.errors.country && (
-                  <p className="text-danger">{formik.errors.country}</p>
-                )}
+                <label htmlFor="address.country">Country</label>
+                {formik.touched.address?.country &&
+                  formik.errors.address?.country && (
+                    <p className="text-danger">
+                      {formik.errors.address?.country}
+                    </p>
+                  )}
               </div>
             </div>
           </div>
@@ -335,16 +331,19 @@ function CreateNewCard() {
                 <input
                   type="text"
                   className="form-control"
-                  id="houseNumber"
+                  id="address.houseNumber"
                   placeholder="House Number"
-                  value={formik.values.houseNumber}
+                  value={formik.values.address?.houseNumber}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                <label htmlFor="houseNumber">House Number</label>
-                {formik.touched.houseNumber && formik.errors.houseNumber && (
-                  <p className="text-danger">{formik.errors.houseNumber}</p>
-                )}
+                <label htmlFor="address.houseNumber">House Number</label>
+                {formik.touched.address?.houseNumber &&
+                  formik.errors.address?.houseNumber && (
+                    <p className="text-danger">
+                      {formik.errors.address?.houseNumber}
+                    </p>
+                  )}
               </div>
             </div>
 
@@ -353,15 +352,15 @@ function CreateNewCard() {
                 <input
                   type="text"
                   className="form-control"
-                  id="zip"
+                  id="address.zip"
                   placeholder="Zip Code"
-                  value={formik.values.zip}
+                  value={formik.values.address?.zip}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                <label htmlFor="zip">Zip</label>
-                {formik.touched.zip && formik.errors.zip && (
-                  <p className="text-danger">{formik.errors.zip}</p>
+                <label htmlFor="address.zip">Zip</label>
+                {formik.touched.address?.zip && formik.errors.address?.zip && (
+                  <p className="text-danger">{formik.errors.address?.zip}</p>
                 )}
               </div>
             </div>
