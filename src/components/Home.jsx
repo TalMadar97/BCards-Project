@@ -3,6 +3,7 @@ import axios from "axios";
 import CardsList from "./CardsList";
 import Pagination from "./Pagination";
 import { baseUrl } from "../config/api";
+import Loading from "./Loading";
 
 function Home() {
   const [cards, setCards] = useState([]);
@@ -27,6 +28,10 @@ function Home() {
 
     fetchCards();
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   // Calculate the current cards to display
   const startIndex = (currentPage - 1) * cardsPerPage;
