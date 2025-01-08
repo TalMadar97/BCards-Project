@@ -1,4 +1,5 @@
 import CreateNewCard from "./CreateNewCard";
+import IconLink from "./icons/IconLink";
 
 function MyCards() {
   return (
@@ -9,7 +10,11 @@ function MyCards() {
           Here you can find your business cards
         </p>
       </div>
-      <CreateNewCard />
+      <IconLink
+        href="/cards/create"
+        iconClass="fa-solid fa-circle-plus"
+        size={"70px"}
+      />
     </>
   );
 }
