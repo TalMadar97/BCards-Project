@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { phoneRegex } from "../config/regex";
+import { phoneRegex, urlRegex } from "../config/regex";
 import axios from "axios";
 import { baseUrl } from "../config/api";
 import { toast } from "react-toastify";
@@ -63,8 +63,19 @@ function CreateNewCard() {
         city: yup.string().required("City is required"),
         country: yup.string().required("Country is required"),
         street: yup.string().required("Street is required"),
-        houseNumber: yup.string().required("house Number is required").min(1),
+        houseNumber: yup
+          .string()
+          .required("house Number is required")
+          .min(1),
         zip: yup.number().required("Zip code is required"),
+      }),
+
+      web: yup.string().matches(urlRegex, "Please enter a valid URL"),
+      image: yup.object({
+        url: yup.string().matches(urlRegex, "Please enter a valid URL"),
+        alt: yup
+          .string()
+          .min(2, "Image Alt text should be at least 2 characters"),
       }),
     }),
     onSubmit: async (values) => {
@@ -76,7 +87,7 @@ function CreateNewCard() {
           toast.success("Card Was Added Successfuly", {
             position: "top-center",
           });
-          navigate("/myCards");
+          navigate("/my-cards");
         }
       } catch (error) {
         console.error(
@@ -130,6 +141,9 @@ function CreateNewCard() {
                   onBlur={formik.handleBlur}
                 />
                 <label htmlFor="subtitle">Subtitle</label>
+                {formik.touched.subtitle && formik.errors.subtitle && (
+                  <p className="text-danger">{formik.errors.subtitle}</p>
+                )}
               </div>
             </div>
           </div>
@@ -228,7 +242,10 @@ function CreateNewCard() {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                <label htmlFor="image.url">Image URL</label>
+                <label htmlFor="image.url">Image Url</label>
+                {formik.touched.image?.url && formik.errors.image?.url && (
+                  <p className="text-danger">{formik.errors.image?.url}</p>
+                )}
               </div>
             </div>
             <div className="col-md-6">
@@ -243,6 +260,9 @@ function CreateNewCard() {
                   onBlur={formik.handleBlur}
                 />
                 <label htmlFor="image.alt">Image Alt</label>
+                {formik.touched.image?.alt && formik.errors.image?.alt && (
+                  <p className="text-danger">{formik.errors.image?.alt}</p>
+                )}
               </div>
             </div>
           </div>
