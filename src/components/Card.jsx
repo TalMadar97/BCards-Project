@@ -3,8 +3,13 @@ import IconButton from "./IconButton";
 import { stringifyAddress } from "../utils/strings";
 import { getUser } from "../utils/cache";
 import { isLiked } from "../utils/cards";
-import { likeCard, unlikeCard, deleteCard as callDeleteCard } from "../services/api";
+import {
+  likeCard,
+  unlikeCard,
+  deleteCard as callDeleteCard,
+} from "../services/api";
 import IconLink from "./icons/IconLink";
+import { toast } from "react-toastify";
 
 function Card(props) {
   const user = getUser();
@@ -87,15 +92,27 @@ function Card(props) {
 
   const deleteCard = async () => {
     try {
-      await callDeleteCard(props.id);
+      const result = await callDeleteCard(props.id);
+
+      if (result) {
+        toast.success("Card was deleted successfully", {
+          position: "top-center",
+        });
+      } else {
+        toast.error("Failed to delete card", { position: "top-center" });
+      }
 
       if (props.refreshCards) {
         await props.refreshCards();
       }
     } catch (error) {
-      console.error(error);
+      console.error(
+        "Error:",
+        error.response ? error.response.data : error.message
+      );
+      toast.error("Failed to delete card", { position: "top-center" });
     }
-  }
+  };
 
   return (
     <>
@@ -117,10 +134,10 @@ function Card(props) {
                 iconClass="fa-solid fa-pen-to-square"
                 href={`/my-cards/${props.id}`}
               />
-            <IconButton
-              iconClass="fa-regular fa-trash-can"
-              onClick={deleteCard}
-            />
+              <IconButton
+                iconClass="fa-regular fa-trash-can"
+                onClick={deleteCard}
+              />
             </>
           )}
         </div>

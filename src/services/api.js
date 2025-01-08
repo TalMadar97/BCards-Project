@@ -125,7 +125,7 @@ export async function deleteCard(cardId) {
     const config = { headers: headers(token) };
 
     const response = await axios.delete(url, config);
-    return response.data;
+    return response;
   } catch (error) {
     console.error(error);
     return null;
