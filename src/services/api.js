@@ -113,10 +113,31 @@ export async function updateCard(cardId, payload) {
     return null;
   }
 }
+
+export async function deleteCard(cardId) {
+  try {
+    const token = cacheUtils.getToken();
+    if (!token) {
+      throw new Error("Unauthorized: No token found.");
+    }
+
+    const url = `${baseUrl}/cards/${cardId}`;
+    const config = { headers: headers(token) };
+
+    const response = await axios.delete(url, config);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
 export default {
   headers,
   getFavouriteCards,
   likeCard,
   unlikeCard,
   createCard,
+  updateCard,
+  deleteCard,
 };

@@ -3,12 +3,13 @@ import IconButton from "./IconButton";
 import { stringifyAddress } from "../utils/strings";
 import { getUser } from "../utils/cache";
 import { isLiked } from "../utils/cards";
-import { likeCard, unlikeCard } from "../services/api";
+import { likeCard, unlikeCard, deleteCard as callDeleteCard } from "../services/api";
 import IconLink from "./icons/IconLink";
 
 function Card(props) {
   const user = getUser();
   const userId = user?._id;
+  const isOwner = props.userId === userId;
 
   const image = () => {
     const img = (
@@ -84,6 +85,18 @@ function Card(props) {
     }
   };
 
+  const deleteCard = async () => {
+    try {
+      await callDeleteCard(props.id);
+
+      if (props.refreshCards) {
+        await props.refreshCards();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <>
       <div className="card p-3">
@@ -98,11 +111,17 @@ function Card(props) {
         <div>
           <IconButton iconClass="fa-solid fa-phone" />
           {likeButton()}
-          {props.userId === userId && (
-            <IconLink
-              iconClass="fa-solid fa-pen-to-square"
-              href={`/my-cards/${props.id}`}
+          {isOwner && (
+            <>
+              <IconLink
+                iconClass="fa-solid fa-pen-to-square"
+                href={`/my-cards/${props.id}`}
+              />
+            <IconButton
+              iconClass="fa-regular fa-trash-can"
+              onClick={deleteCard}
             />
+            </>
           )}
         </div>
       </div>
