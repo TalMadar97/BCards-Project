@@ -6,7 +6,6 @@ function Navbar() {
   const navigate = useNavigate();
 
   const user = cacheUtils.getUser();
-  console.log("user : ", user);
 
   const logout = () => {
     cacheUtils.clear();
@@ -83,7 +82,6 @@ function Navbar() {
                 <button
                   className="nav-link text-white me-3 fs-5"
                   onClick={logout}
-                  
                 >
                   Logout
                 </button>
