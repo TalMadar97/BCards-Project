@@ -3,12 +3,32 @@ import { baseUrl } from "../config/api";
 import { headers } from "../utils/api";
 import cacheUtils from "../utils/cache";
 
-export async function getMyCards(userId) {
+export async function getFavouriteCards(userId) {
   try {
     let response = await axios.get(`${baseUrl}/cards`);
     let cards = response.data;
     cards = cards.filter((card) => card.likes.includes(userId));
     return cards;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export async function getMyCards() {
+  try {
+    const token = cacheUtils.getToken();
+    if (!token) {
+      throw new Error("Unauthorized: No token found.");
+    }
+
+    const url = `${baseUrl}/cards/my-cards`;
+    const config = {
+      headers: headers(token),
+    };
+
+    const response = await axios.get(url, config);
+    return response;
   } catch (error) {
     console.error(error);
     return [];
@@ -69,11 +89,17 @@ export async function createCard(payload) {
     const config = { headers: headers(token) };
 
     const response = await axios.post(url, payload, config);
-    return response.data
+    return response.data;
   } catch (error) {
     console.error(error);
     return null;
   }
 }
 
-export default { headers, getMyCards, likeCard, unlikeCard, createCard };
+export default {
+  headers,
+  getFavouriteCards,
+  likeCard,
+  unlikeCard,
+  createCard,
+};

@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 import { baseUrl } from "../config/api";
 import Loading from "./Loading";
 
-import { getMyCards } from "../services/api";
+import { getFavouriteCards } from "../services/api";
 import { getToken, getUser } from "../utils/cache";
 
 function Favourites() {
@@ -19,7 +19,7 @@ function Favourites() {
 
   const fetchCards = async () => {
     try {
-      const response = await getMyCards(user?._id);
+      const response = await getFavouriteCards(user?._id);
       setCards(response);
     } catch (error) {
       console.error(error);
