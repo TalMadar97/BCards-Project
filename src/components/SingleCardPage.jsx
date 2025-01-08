@@ -49,6 +49,7 @@ function SingleCardPage() {
           phone={card.phone}
           web={card.web}
           address={card.address}
+          likes={card.likes}
         />
       </div>
     </>
