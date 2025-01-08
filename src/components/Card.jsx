@@ -38,7 +38,12 @@ function Card(props) {
 
     return <>{img}</>;
   };
+  
   const likeButton = () => {
+    if (!props.likes) {
+      return <></>;
+    }
+
     if (isLiked(userId, props?.likes)) {
       return (
         <IconButton
