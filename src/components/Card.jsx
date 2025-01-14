@@ -47,7 +47,7 @@ function Card(props) {
   };
 
   const likeButton = () => {
-    if (!props.likes) {
+    if (!props.likes || !user) {
       return <></>;
     }
 
