@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "./contexts/GlobalContext";
 import CardsList from "./CardsList";
 import Pagination from "./Pagination";
-import { baseUrl } from "../config/api";
 import Loading from "./Loading";
 
 import { getFavouriteCards } from "../services/api";
 import { getToken, getUser } from "../utils/cache";
+import { searchCards } from "../utils/cards";
 
 function Favourites() {
+  const { searchText } = useContext(GlobalContext);
+
   const [cards, setCards] = useState([]);
+  const [filteredCards, setFilteredCards] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,13 +36,17 @@ function Favourites() {
     fetchCards();
   }, []);
 
+  useEffect(() => {
+    const filtered = searchCards(cards, searchText);
+    setFilteredCards(filtered);
+  }, [searchText, cards]);
+
   if (loading) {
     return <Loading />;
   }
 
-  // Calculate the current cards to display
   const startIndex = (currentPage - 1) * cardsPerPage;
-  const currentCards = cards.slice(startIndex, startIndex + cardsPerPage);
+  const currentCards = filteredCards.slice(startIndex, startIndex + cardsPerPage);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -56,7 +63,7 @@ function Favourites() {
       <CardsList cards={currentCards} refreshCards={fetchCards} />
       <Pagination
         currentPage={currentPage}
-        totalPages={Math.ceil(cards.length / cardsPerPage)}
+        totalPages={Math.ceil(filteredCards.length / cardsPerPage)}
         onPageChange={handlePageChange}
       />
     </>
