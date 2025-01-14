@@ -126,7 +126,7 @@ function Card(props) {
         {props.web && <p>Website: {props.web}</p>}
         {props.address && <p>Address: {stringifyAddress(props.address)}</p>}
         <div>
-          <IconButton iconClass="fa-solid fa-phone" />
+          <IconLink iconClass="fa-solid fa-phone" href="tel:1234567891" />
           {likeButton()}
           {isOwner && (
             <>
