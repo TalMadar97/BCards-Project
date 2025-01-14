@@ -1,9 +1,12 @@
+import { useContext } from "react";
+import { GlobalContext } from "./contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import cacheUtils from "../utils/cache";
 import DarkModeButton from "./DarkModeButton";
 import IconLink from "./icons/IconLink";
 
 function Navbar() {
+  const { searchText, setSearchText } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   const user = cacheUtils.getUser();
@@ -58,17 +61,15 @@ function Navbar() {
             )}
           </ul>
 
-          <form className="d-flex">
-            <input
-              className="form-control me-2 fs-5"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-light fs-5" type="submit">
-              Search
-            </button>
-          </form>
+          <input
+            className="form-control me-2 fs-5"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+
           <div className="mx-5">
             <DarkModeButton />
           </div>
