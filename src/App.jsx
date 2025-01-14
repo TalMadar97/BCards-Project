@@ -15,6 +15,7 @@ import MyCards from "./components/MyCards";
 import CreateNewCard from "./components/CreateNewCard";
 import UpdateCard from "./components/UpdateCard";
 import ProfilePage from "./components/Profile/ProfilePage";
+import UpdateProfile from "./components/Profile/UpdateProfile";
 
 //comment
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile/:id" element={<UpdateProfile />} />
             <Route path="/aboutme" element={<AboutMe />} />
             <Route path="/favourites" element={<Favourites />} />
             <Route path="/my-cards" element={<MyCards />} />

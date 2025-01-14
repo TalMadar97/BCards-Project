@@ -152,6 +152,24 @@ export async function getProfile(userId) {
   }
 }
 
+export async function updateProfile(userId, payload) {
+  try {
+    const token = cacheUtils.getToken();
+    if (!token) {
+      throw new Error("Unauthorized: No token found.");
+    }
+
+    const url = `${baseUrl}/users/${userId}`;
+    const config = { headers: headers(token) };
+
+    const response = await axios.put(url, payload, config);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
 export default {
   headers,
   getFavouriteCards,
@@ -161,4 +179,5 @@ export default {
   updateCard,
   deleteCard,
   getProfile,
+  updateProfile,
 };
