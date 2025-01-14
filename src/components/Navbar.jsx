@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import cacheUtils from "../utils/cache";
 import DarkModeButton from "./DarkModeButton";
+import IconLink from "./icons/IconLink";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -71,6 +72,16 @@ function Navbar() {
           <div className="mx-5">
             <DarkModeButton />
           </div>
+
+          {user && (
+            <IconLink
+              iconClass="fa-regular fa-id-card"
+              href="/profile"
+              color={"var(--color-text)"}
+              size={"1.8rem"}
+            />
+          )}
+
           {!user && (
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
