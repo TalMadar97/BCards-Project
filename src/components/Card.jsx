@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 function Card(props) {
   const user = getUser();
   const userId = user?._id;
-  const isOwner = props.userId === userId;
+  const isOwner = userId ? props.userId === userId : false;
 
   const image = () => {
     const img = (
