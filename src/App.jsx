@@ -14,7 +14,7 @@ import Favourites from "./components/favourites";
 import MyCards from "./components/MyCards";
 import CreateNewCard from "./components/CreateNewCard";
 import UpdateCard from "./components/UpdateCard";
-import Profile from "./components/Profile";
+import ProfilePage from "./components/Profile/ProfilePage";
 
 //comment
 function App() {
@@ -27,7 +27,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path="/aboutme" element={<AboutMe />} />
             <Route path="/favourites" element={<Favourites />} />
             <Route path="/my-cards" element={<MyCards />} />

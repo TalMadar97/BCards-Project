@@ -132,6 +132,26 @@ export async function deleteCard(cardId) {
   }
 }
 
+export async function getProfile(userId) {
+  try {
+    const token = cacheUtils.getToken();
+    if (!token) {
+      throw new Error("Unauthorized: No token found.");
+    }
+
+    const url = `${baseUrl}/users/${userId}`;
+    const config = {
+      headers: headers(token),
+    };
+
+    const response = await axios.get(url, config);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
 export default {
   headers,
   getFavouriteCards,
@@ -140,4 +160,5 @@ export default {
   createCard,
   updateCard,
   deleteCard,
+  getProfile,
 };
