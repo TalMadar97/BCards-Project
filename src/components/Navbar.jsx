@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { GlobalContext } from "./contexts/GlobalContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import cacheUtils from "../utils/cache";
 import DarkModeButton from "./DarkModeButton";
 import IconLink from "./icons/IconLink";
@@ -20,12 +20,12 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light shadow-sm">
       <div className="container">
-        <a
+        <Link
           className="nav-link navbar-brand fw-bold text-white fs-1 me-5"
-          href="/"
+          to="/"
         >
           B-Cards
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -41,22 +41,22 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link text-white fs-3 me-5" href="/aboutme">
+              <Link className="nav-link text-white fs-3 me-5" to="/aboutme">
                 About
-              </a>
+              </Link>
             </li>
             {user && (
               <li className="nav-item">
-                <a className="nav-link text-white fs-3" href="/favourites">
+                <Link className="nav-link text-white fs-3" to="/favourites">
                   Favorites
-                </a>
+                </Link>
               </li>
             )}
             {isBusiness && (
               <li className="nav-item">
-                <a className="nav-link text-white fs-3 mx-3" href="/my-cards">
+                <Link className="nav-link text-white fs-3 mx-3" to="/my-cards">
                   My Cards
-                </a>
+                </Link>
               </li>
             )}
           </ul>
@@ -86,14 +86,14 @@ function Navbar() {
           {!user && (
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link text-white me-3 fs-5" href="/login">
+                <Link className="nav-link text-white me-3 fs-5" to="/login">
                   Login
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-white fs-5" href="/register">
+                <Link className="nav-link text-white fs-5" to="/register">
                   Register
-                </a>
+                </Link>
               </li>
             </ul>
           )}
