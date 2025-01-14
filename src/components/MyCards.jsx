@@ -1,12 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "./contexts/GlobalContext";
 import CardsList from "./CardsList";
 import Pagination from "./Pagination";
 import Loading from "./Loading";
 import { getMyCards } from "../services/api";
 import IconLink from "./icons/IconLink";
+import { searchCards } from "../utils/cards";
 
 function MyCards() {
+  const { searchText } = useContext(GlobalContext);
+
   const [cards, setCards] = useState([]);
+  const [filteredCards, setFilteredCards] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,13 +33,17 @@ function MyCards() {
     fetchCards();
   }, []);
 
+  useEffect(() => {
+    const filtered = searchCards(cards, searchText);
+    setFilteredCards(filtered);
+  }, [searchText, cards]);
+
   if (loading) {
     return <Loading />;
   }
 
-  // Calculate the current cards to display
   const startIndex = (currentPage - 1) * cardsPerPage;
-  const currentCards = cards.slice(startIndex, startIndex + cardsPerPage);
+  const currentCards = filteredCards.slice(startIndex, startIndex + cardsPerPage);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -52,7 +61,7 @@ function MyCards() {
       <CardsList cards={currentCards} refreshCards={fetchCards} />
       <Pagination
         currentPage={currentPage}
-        totalPages={Math.ceil(cards.length / cardsPerPage)}
+        totalPages={Math.ceil(filteredCards.length / cardsPerPage)}
         onPageChange={handlePageChange}
       />
 
