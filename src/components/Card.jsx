@@ -114,6 +114,10 @@ function Card(props) {
     }
   };
 
+  const phoneNumber = () => {
+    return props.phone ? props.phone : "0987654321";
+  };
+
   return (
     <>
       <div className="card p-3">
@@ -122,11 +126,14 @@ function Card(props) {
         <h3 className="card-subtitle">{props.subtitle}</h3>
         <p className="card-text">{props.description}</p>
         {props.email && <p>Email: {props.email}</p>}
-        {props.phone && <p>Phone: {props.phone}</p>}
+        {props.showPhone && <p>Phone: {props.phone}</p>}
         {props.web && <p>Website: {props.web}</p>}
         {props.address && <p>Address: {stringifyAddress(props.address)}</p>}
         <div>
-          <IconLink iconClass="fa-solid fa-phone" href="tel:1234567891" />
+          <IconLink
+            iconClass="fa-solid fa-phone"
+            href={`tel:${phoneNumber()}`}
+          />
           {likeButton()}
           {isOwner && (
             <>

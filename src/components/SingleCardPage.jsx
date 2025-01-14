@@ -48,6 +48,7 @@ function SingleCardPage() {
           image={card.image}
           email={card.email}
           phone={card.phone}
+          showPhone={true}
           web={card.web}
           address={card.address}
         />

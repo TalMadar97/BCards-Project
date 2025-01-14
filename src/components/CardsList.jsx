@@ -13,6 +13,7 @@ function CardsList({ cards, refreshCards }) {
                 title={card.title}
                 subtitle={card.subtitle}
                 description={card.description}
+                phone={card.phone}
                 image={card.image}
                 likes={card.likes}
                 refreshCards={refreshCards}
