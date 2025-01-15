@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function IconLink({ iconClass, href, label, size, color, style, target }) {
   return (
-    <a
+    <Link
       href={href}
       target={target}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
@@ -22,7 +23,7 @@ function IconLink({ iconClass, href, label, size, color, style, target }) {
       aria-label={label}
     >
       <i className={`${iconClass}`} style={{ fontSize: size, color: color }} />
-    </a>
+    </Link>
   );
 }
 
