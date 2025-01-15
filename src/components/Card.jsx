@@ -10,6 +10,7 @@ import {
 } from "../services/api";
 import IconLink from "./icons/IconLink";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function Card(props) {
   const user = getUser();
@@ -33,13 +34,13 @@ function Card(props) {
 
     if (props.id) {
       return (
-        <a
+        <Link
           className="text-dark"
           href={`/cards/${props.id}`}
           style={{ textDecoration: "none" }}
         >
           {img}
-        </a>
+        </Link>
       );
     }
 
