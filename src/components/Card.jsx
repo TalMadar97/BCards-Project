@@ -36,7 +36,7 @@ function Card(props) {
       return (
         <Link
           className="text-dark"
-          href={`/cards/${props.id}`}
+          to={`/cards/${props.id}`}
           style={{ textDecoration: "none" }}
         >
           {img}
