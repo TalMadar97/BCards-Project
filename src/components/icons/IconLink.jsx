@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function IconLink({ iconClass, href, label, size, color, style, target }) {
   return (
     <Link
-      href={href}
+      to={href}
       target={target}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
       style={{
