@@ -42,9 +42,14 @@ footer {
   background-color: var(--color-primary);
 }
 
+footer div {
+  margin-top: 15px;
+}
+
 @media screen and (max-width: 768px) {
   footer div {
     flex-direction: column;
+    gap: 10px;
   }
 }
 
