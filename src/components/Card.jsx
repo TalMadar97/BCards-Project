@@ -132,7 +132,7 @@ function Card(props) {
         {props.showPhone && <p>Phone: {props.phone}</p>}
         {props.web && <p>Website: {props.web}</p>}
         {props.address && <p>Address: {stringifyAddress(props.address)}</p>}
-        <div>
+        <div className="icon-buttons">
           <IconLink
             iconClass="fa-solid fa-phone"
             href={`tel:${phoneNumber()}`}

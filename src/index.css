@@ -235,6 +235,12 @@ main {
   color: var(--color-error);
 }
 
+.icon-buttons {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
 /* Dark Mode Button */
 .dark-mode-btn {
   background-color: transparent;
