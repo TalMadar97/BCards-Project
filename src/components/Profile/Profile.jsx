@@ -4,6 +4,7 @@ import {
   stringifyName,
 } from "../../utils/strings";
 import IconLink from "../icons/IconLink";
+import ImageWithFallback from "../Images/ImageWithFallback";
 
 function Profile(props) {
   console.log(props);
@@ -11,7 +12,19 @@ function Profile(props) {
   return (
     <>
       <div className="card p-3">
-        {/* {image()} */}
+        <div className="container" style={{width:"auto"}}  >
+          <ImageWithFallback
+            src={props.image?.url}
+            alt={props.image?.alt}
+            fallbackSrc={"profile.png"}
+            style={{
+              width: "100%",
+              height: "250px",
+              borderRadius: "5px",
+              objectFit: "cover",
+            }}
+          />
+        </div>
         <h2 className="card-title">{props.title}</h2>
         <h3 className="card-subtitle">{props.subtitle}</h3>
         <p className="card-text">{props.description}</p>
