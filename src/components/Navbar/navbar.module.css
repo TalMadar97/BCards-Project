@@ -5,13 +5,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 25px 20px;
   background-color: var(--color-primary);
   color: rgb(var(--text));
 }
 
 .navbar a {
     color: whitesmoke;
+    white-space: nowrap;
 }
 .navbar a:hover {
     color: var(--color-text-hover);
@@ -30,7 +31,7 @@
 
 .links {
   display: flex;
-  gap: 20px;
+  gap: 50px;
   font-size: 1.5rem;
 }
 
@@ -89,6 +90,7 @@
   .links {
     display: none; /* Hide links on mobile */
     flex-direction: column;
+    gap: 20px;
     padding: 2rem 1rem;
     background-color: var(--color-primary);;
     position: absolute;
