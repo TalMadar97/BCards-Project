@@ -1,10 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
+import IconButton from "./IconButton";
 
 function Pagination({ currentPage, totalPages, onPageChange }) {
   const getPageNumbers = () => {
+    const visiblePages = 5;
+    const halfVisible = Math.floor(visiblePages / 2);
+    let start = Math.max(currentPage - halfVisible, 1);
+    let end = start + visiblePages - 1;
+
+    if (end > totalPages) {
+      end = totalPages;
+      start = Math.max(end - visiblePages + 1, 1);
+    }
+
     const pageNumbers = [];
-    for (let i = 1; i <= totalPages; i++) {
+    for (let i = start; i <= end; i++) {
       pageNumbers.push(i);
     }
     return pageNumbers;
@@ -19,19 +30,16 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
         padding: "16px",
       }}
     >
-      {/* Previous Button */}
-      <button
+      <IconButton
+        iconClass="fa-solid fa-arrow-left"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
         style={{
           padding: "8px 16px",
           cursor: currentPage === 1 ? "not-allowed" : "pointer",
         }}
-      >
-        Prev
-      </button>
+      />
 
-      {/* Page Numbers */}
       {getPageNumbers().map((number) => (
         <button
           key={number}
@@ -55,17 +63,15 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
         </button>
       ))}
 
-      {/* Next Button */}
-      <button
+      <IconButton
+        iconClass="fa-solid fa-arrow-right"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         style={{
           padding: "8px 16px",
           cursor: currentPage === totalPages ? "not-allowed" : "pointer",
         }}
-      >
-        Next
-      </button>
+      />
     </div>
   );
 }
