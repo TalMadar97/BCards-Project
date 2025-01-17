@@ -12,7 +12,7 @@ function Footer() {
             href="https://www.linkedin.com/feed/?trk=404_page"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white fs-4"
+            className="text-white fs-1"
           >
             <i className="fab fa-linkedin"></i>
           </a>
