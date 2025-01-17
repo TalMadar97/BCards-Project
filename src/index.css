@@ -119,6 +119,12 @@ main {
   margin: 0 auto;
 }
 
+.single-card-page h1 {
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
 .single-card-page .card {
   width: 100%;
   height: auto;
