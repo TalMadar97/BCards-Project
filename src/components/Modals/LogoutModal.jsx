@@ -9,8 +9,13 @@ function LogoutModal() {
 
   const logout = () => {
     cacheUtils.clear();
-    navigate("/");
     setModalOpen(false);
+
+    if (location.pathname === "/") {
+      location.reload();
+    } else {
+      navigate("/");
+    }
   };
 
   return (
