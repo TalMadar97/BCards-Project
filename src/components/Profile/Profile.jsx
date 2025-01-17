@@ -12,7 +12,7 @@ function Profile(props) {
   return (
     <>
       <div className="card p-3">
-        <div className="container" style={{width:"auto"}}  >
+        <div className="container" style={{ width: "auto" }}>
           <ImageWithFallback
             src={props.image?.url}
             alt={props.image?.alt}
@@ -37,6 +37,7 @@ function Profile(props) {
           <IconLink
             iconClass="fa-solid fa-pen-to-square"
             href={`/profile/${props._id}`}
+            size={"1.8rem"}
           />
         </div>
       </div>
