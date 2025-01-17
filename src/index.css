@@ -90,8 +90,8 @@ main {
   box-shadow: 0 2px 4px var(--color-tertiary);
   transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
-  /* min-height: 500px; */
   height: 500px;
+  margin: 15px 10px ;
 }
 
 .card-title {
