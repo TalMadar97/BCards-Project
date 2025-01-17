@@ -54,7 +54,7 @@ function Login() {
 
   return (
     <>
-      <div className="container w-25">
+      <div className="container login-container">
         <h1 className="text display-4 my-4 text-center">Login</h1>
 
         <form onSubmit={formik.handleSubmit}>
