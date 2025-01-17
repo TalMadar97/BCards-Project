@@ -5,7 +5,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { baseUrl } from "../config/api";
 import { toast } from "react-toastify";
-import { phoneRegex, urlRegex } from "../config/regex";
+import { phoneRegex, positiveNumberRegex, urlRegex } from "../config/regex";
 import { updateCard as callUpdateCard } from "../services/api";
 
 function UpdateCard() {
@@ -69,7 +69,14 @@ function UpdateCard() {
         city: yup.string().required("City is required"),
         country: yup.string().required("Country is required"),
         street: yup.string().required("Street is required"),
-        houseNumber: yup.string().required("house Number is required").min(1),
+        houseNumber: yup
+          .string()
+          .required("House Number is required")
+          .min(1)
+          .matches(
+            positiveNumberRegex,
+            "House number must contain positive numbers"
+          ),
         zip: yup.number().required("Zip code is required"),
       }),
 

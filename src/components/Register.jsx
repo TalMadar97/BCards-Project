@@ -1,7 +1,11 @@
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { passwordRegex, phoneRegex } from "../config/regex";
+import {
+  passwordRegex,
+  phoneRegex,
+  positiveNumberRegex,
+} from "../config/regex";
 import axios from "axios";
 import { baseUrl } from "../config/api";
 import { toast } from "react-toastify";
@@ -54,6 +58,18 @@ function Register() {
           passwordRegex,
           "Password must include one letter, one number, and one special character"
         ),
+      city: yup.string().required("City is required"),
+      country: yup.string().required("Country is required"),
+      street: yup.string().required("Street is required"),
+      houseNumber: yup
+        .string()
+        .required("House Number is required")
+        .min(1)
+        .matches(
+          positiveNumberRegex,
+          "House number must contain positive numbers"
+        ),
+      zip: yup.number().required("Zip code is required"),
     }),
     onSubmit: async (values) => {
       try {
@@ -235,6 +251,9 @@ function Register() {
                 onBlur={formik.handleBlur}
               />
               <label htmlFor="imageUrl">Image URL</label>
+              {formik.touched.imageUrl && formik.errors.imageUrl && (
+                <p className="text-danger">{formik.errors.imageUrl}</p>
+              )}
             </div>
           </div>
           <div className="col-md-6">
@@ -248,7 +267,10 @@ function Register() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
-              <label htmlFor="imageAlt">Image Alt</label>
+              <label htmlFor="imageAlt">Image ALT</label>
+              {formik.touched.imageAlt && formik.errors.imageAlt && (
+                <p className="text-danger">{formik.errors.imageAlt}</p>
+              )}
             </div>
           </div>
         </div>
@@ -267,6 +289,9 @@ function Register() {
                 onBlur={formik.handleBlur}
               />
               <label htmlFor="street">Street</label>
+              {formik.touched.street && formik.errors.street && (
+                <p className="text-danger">{formik.errors.street}</p>
+              )}
             </div>
           </div>
           <div className="col-md-6">
@@ -281,6 +306,9 @@ function Register() {
                 onBlur={formik.handleBlur}
               />
               <label htmlFor="city">City</label>
+              {formik.touched.city && formik.errors.city && (
+                <p className="text-danger">{formik.errors.city}</p>
+              )}
             </div>
           </div>
         </div>
@@ -298,6 +326,9 @@ function Register() {
                 onBlur={formik.handleBlur}
               />
               <label htmlFor="state">State</label>
+              {formik.touched.state && formik.errors.state && (
+                <p className="text-danger">{formik.errors.state}</p>
+              )}
             </div>
           </div>
           <div className="col-md-6">
@@ -312,6 +343,9 @@ function Register() {
                 onBlur={formik.handleBlur}
               />
               <label htmlFor="country">Country</label>
+              {formik.touched.country && formik.errors.country && (
+                <p className="text-danger">{formik.errors.country}</p>
+              )}
             </div>
           </div>
         </div>
@@ -329,6 +363,9 @@ function Register() {
                 onBlur={formik.handleBlur}
               />
               <label htmlFor="houseNumber">House Number</label>
+              {formik.touched.houseNumber && formik.errors.houseNumber && (
+                <p className="text-danger">{formik.errors.houseNumber}</p>
+              )}
             </div>
           </div>
 
@@ -338,12 +375,15 @@ function Register() {
                 type="text"
                 className="form-control"
                 id="zip"
-                placeholder="Zip Code"
+                placeholder="Zip"
                 value={formik.values.zip}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
-              <label htmlFor="zip">Zip Code</label>
+              <label htmlFor="zip">Zip</label>
+              {formik.touched.zip && formik.errors.zip && (
+                <p className="text-danger">{formik.errors.zip}</p>
+              )}
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { getProfile } from "../../services/api";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
-import { phoneRegex, urlRegex } from "../../config/regex";
+import { phoneRegex, positiveNumberRegex, urlRegex } from "../../config/regex";
 import { updateProfile as callUpdateProfile } from "../../services/api";
 import Loading from "../Loading";
 
@@ -71,7 +71,14 @@ function UpdateProfile() {
         city: yup.string().required("City is required"),
         country: yup.string().required("Country is required"),
         street: yup.string().required("Street is required"),
-        houseNumber: yup.string().required("house Number is required").min(1),
+        houseNumber: yup
+          .string()
+          .required("House Number is required")
+          .min(1)
+          .matches(
+            positiveNumberRegex,
+            "House number must contain positive numbers"
+          ),
         zip: yup.number().required("Zip code is required"),
       }),
 
