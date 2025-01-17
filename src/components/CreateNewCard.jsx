@@ -50,7 +50,10 @@ function CreateNewCard() {
       phone: yup
         .string()
         .required("Phone number is required")
-        .matches(phoneRegex, "Phone number must contain only digits")
+        .matches(
+          phoneRegex,
+          "Phone number must contain only digits and start with 0"
+        )
         .min(9, "Phone number must be at least 9 digits")
         .max(11, "Phone number must be at most 11 digits"),
 
