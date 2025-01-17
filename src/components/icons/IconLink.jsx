@@ -2,7 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function IconLink({ iconClass, href, label, size, color, style, target }) {
+function IconLink({
+  iconClass,
+  href,
+  label,
+  size,
+  color,
+  style,
+  target,
+  justifyContentProp,
+  alignItemsProp,
+}) {
+  const justifyContent = justifyContentProp ? justifyContentProp : "center";
+  const alignItems = alignItemsProp ? alignItemsProp : "center";
+
   return (
     <Link
       to={href}
@@ -10,8 +23,8 @@ function IconLink({ iconClass, href, label, size, color, style, target }) {
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
       style={{
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        alignItems: alignItems,
+        justifyContent: justifyContent,
         textDecoration: "none",
         padding: "10px",
         border: "none",

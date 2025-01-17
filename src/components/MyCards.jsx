@@ -50,7 +50,7 @@ function MyCards() {
   };
 
   return (
-    <>
+    <div className="container">
       <div className="text text-center mb-4 my-4">
         <h1>My Cards</h1>
         <p className="text-center mb-4">
@@ -70,7 +70,7 @@ function MyCards() {
         iconClass="fa-solid fa-circle-plus"
         size={"70px"}
       />
-    </>
+    </div>
   );
 }
 

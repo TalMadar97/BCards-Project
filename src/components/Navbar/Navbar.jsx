@@ -85,7 +85,7 @@ function Navbar() {
           onChange={(e) => setSearchText(e.target.value)}
         />
 
-        <div className="mx-5">
+        <div>
           <DarkModeButton />
         </div>
 
@@ -95,6 +95,7 @@ function Navbar() {
             href="/profile"
             color={"var(--color-text)"}
             size={"1.8rem"}
+            justifyContentProp={"flex-start"}
           />
         )}
 
@@ -114,7 +115,7 @@ function Navbar() {
             </Link>
           </>
         )}
-        {user && <button onClick={logout}>Logout</button>}
+        {user && <button className={styles.logout} onClick={logout}>Logout</button>}
       </div>
       <div
         className={`${styles.hamburger} ${showLinks ? styles.open : ""}`}
