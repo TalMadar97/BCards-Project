@@ -11,18 +11,18 @@
 }
 
 .navbar a {
-    color: whitesmoke;
-    white-space: nowrap;
+  color: whitesmoke;
+  white-space: nowrap;
 }
 .navbar a:hover {
-    color: var(--color-text-hover);
+  color: var(--color-text-hover);
 }
 
 .navbar a {
-    color: whitesmoke;
+  color: whitesmoke;
 }
 .navbar a:hover {
-    color: var(--color-text-hover);
+  color: var(--color-text-hover);
 }
 
 .logo {
@@ -49,14 +49,6 @@
   margin: 0;
 }
 
-.logout {
-    color: whitesmoke;
-}
-
-.logout:hover {
-    color: var(--color-text-hover);
-}
-
 /* Hamburger menu */
 .hamburger {
   font-size: 2.5rem;
@@ -75,9 +67,9 @@
 }
 
 @media screen and (min-width: 768px) {
-    .navbar {
-        justify-content: center;
-    }
+  .navbar {
+    justify-content: center;
+  }
 }
 
 /* Media query for mobile */
@@ -92,7 +84,7 @@
     flex-direction: column;
     gap: 20px;
     padding: 2rem 1rem;
-    background-color: var(--color-primary);;
+    background-color: var(--color-primary);
     position: absolute;
     top: 75px;
     left: 0;

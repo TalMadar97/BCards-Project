@@ -5,6 +5,7 @@ import cacheUtils from "../../utils/cache";
 import DarkModeButton from "../DarkModeButton";
 import IconLink from "../icons/IconLink";
 import styles from "./navbar.module.css";
+import LogoutModal from "../Modals/LogoutModal";
 
 function Navbar() {
   const { searchText, setSearchText } = useContext(GlobalContext);
@@ -38,11 +39,6 @@ function Navbar() {
   useEffect(() => {
     setShowLinks(false);
   }, [pathname]);
-
-  const logout = () => {
-    cacheUtils.clear();
-    navigate("/");
-  };
 
   return (
     <nav ref={navbarRef} className={styles.navbar}>
@@ -115,7 +111,8 @@ function Navbar() {
             </Link>
           </>
         )}
-        {user && <button className={styles.logout} onClick={logout}>Logout</button>}
+
+        {user && <LogoutModal />}
       </div>
       <div
         className={`${styles.hamburger} ${showLinks ? styles.open : ""}`}

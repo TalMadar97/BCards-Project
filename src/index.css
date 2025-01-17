@@ -204,6 +204,14 @@ main {
   }
 }
 
+.logout-button {
+  color: whitesmoke;
+}
+
+.logout-button:hover {
+  color: var(--color-text-hover);
+}
+
 .error-container {
   display: flex;
   justify-content: center;
