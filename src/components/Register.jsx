@@ -123,7 +123,7 @@ function Register() {
   });
 
   return (
-    <div className="container w-md-50">
+    <div className="container w-md-50 my-4">
       <h4 className="text display-4 my-4 text-center">Register</h4>
       <form onSubmit={formik.handleSubmit}>
         {/* Row 1: First Name and Middle Name */}
