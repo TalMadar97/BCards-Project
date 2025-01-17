@@ -11,6 +11,7 @@ import {
 import IconLink from "./icons/IconLink";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import ImageWithFallback from "./Images/ImageWithFallback";
 
 function Card(props) {
   const user = getUser();
@@ -19,16 +20,17 @@ function Card(props) {
 
   const image = () => {
     const img = (
-      <img
+      <ImageWithFallback
         className="img-thumbnail"
-        src={props.image?.url}
-        alt={props.image?.alt}
         style={{
           width: "100%",
           height: "250px",
           borderRadius: "5px",
           objectFit: "cover",
         }}
+        src={props.image?.url}
+        alt={props.image?.alt}
+        fallbackSrc="/imageNotFound.png"
       />
     );
 
