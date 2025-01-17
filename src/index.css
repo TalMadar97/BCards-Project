@@ -107,9 +107,9 @@ main {
 }
 
 .card:hover {
-  transform: scale(1.03); /* Slightly smaller zoom */
+  transform: scale(1.03);
   box-shadow: 0 3px 6px var(--color-primary);
-  background-color: var(--color-secondary); /* Very subtle transparency */
+  background-color: var(--color-secondary);
 }
 
 /*Single Cards Styles */
@@ -125,6 +125,12 @@ main {
   box-shadow: none;
   margin-bottom: 0;
   color: var(--color-text);
+}
+
+.single-card-page .card:hover {
+  transform: scale(1);
+  box-shadow: 0 0px 0px var(--color-primary);
+  background-color: var(--color-card-background);
 }
 
 .single-card-page.card img {

@@ -46,6 +46,7 @@ function SingleCardPage() {
           subtitle={card.subtitle}
           description={card.description}
           image={card.image}
+          imageCursor={"default"}
           email={card.email}
           phone={card.phone}
           showPhone={true}

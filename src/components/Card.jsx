@@ -34,12 +34,14 @@ function Card(props) {
       />
     );
 
+    const cursor = props.imageCursor ? props.imageCursor : "pointer";
+    
     if (props.id) {
       return (
         <Link
           className="text-dark"
           to={`/cards/${props.id}`}
-          style={{ textDecoration: "none" }}
+          style={{ textDecoration: "none", cursor }}
         >
           {img}
         </Link>
