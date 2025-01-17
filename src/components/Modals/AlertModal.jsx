@@ -7,7 +7,7 @@ const AlertModal = ({ isOpen, onClose, onConfirm, title }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <h2>{title}</h2>
+      <h3>{title}</h3>
       <div className="modal-buttons">
         <button className="modal-button cancel" onClick={onClose}>
           Cancel

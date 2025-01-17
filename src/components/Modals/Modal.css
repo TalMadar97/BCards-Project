@@ -13,9 +13,9 @@
 
 .modal-content {
   background: white;
-  padding: 20px;
+  padding: 60px 30px;
   border-radius: 8px;
-  width: 500px;
+  width: 700px;
   max-width: 90%;
   position: relative;
   color: black;
