@@ -66,14 +66,14 @@
   font-weight: 700;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .navbar {
     justify-content: center;
   }
 }
 
 /* Media query for mobile */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .logo > a > img {
     width: 120px;
     height: 80px;
