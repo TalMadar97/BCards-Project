@@ -79,6 +79,8 @@ main {
   box-shadow: 0 2px 4px var(--color-tertiary);
   transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
+  /* min-height: 500px; */
+  height: 500px;
 }
 
 .card-title {
@@ -119,6 +121,7 @@ main {
 
 .single-card-page .card {
   width: 100%;
+  height: auto;
   box-shadow: none;
   margin-bottom: 0;
   color: var(--color-text);
@@ -131,6 +134,28 @@ main {
 
 .single-card-page .card-body {
   padding: 15px;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
+  display: block;
+}
+
+.no-ellipsis {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  width: auto;
+}
+
+.no-ellipsis p {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  width: auto;
 }
 
 /* PageNotFound styles */

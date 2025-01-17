@@ -38,10 +38,10 @@ function SingleCardPage() {
 
   return (
     <>
-      <div className="single-card-page">
+      <div className="single-card-page no-ellipsis">
         <Card
           key={id}
-          id ={id}
+          id={id}
           title={card.title}
           subtitle={card.subtitle}
           description={card.description}

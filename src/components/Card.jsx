@@ -123,11 +123,11 @@ function Card(props) {
 
   return (
     <>
-      <div className="card p-3">
+      <div className="card p-3   ">
         {image()}
         <h2 className="card-title">{props.title}</h2>
         <h3 className="card-subtitle">{props.subtitle}</h3>
-        <p className="card-text">{props.description}</p>
+        <p className="card-text ellipsis">{props.description}</p>
         {props.email && <p>Email: {props.email}</p>}
         {props.showPhone && <p>Phone: {props.phone}</p>}
         {props.web && <p>Website: {props.web}</p>}
