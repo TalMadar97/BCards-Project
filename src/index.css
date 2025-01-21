@@ -81,6 +81,16 @@ main {
   flex: 1;
   background-color: var(--color-background);
 }
+
+/* map */
+
+.map-container {
+  margin-top: 16px;
+  height: 200px; /* Adjust height */
+  width: 100%;
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden;
+}
 /* Cards Styles */
 
 .card {

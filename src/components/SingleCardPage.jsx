@@ -5,6 +5,7 @@ import { baseUrl } from "../config/api";
 import Card from "./Card";
 import Loading from "./Loading";
 import Error from "./Error";
+import WorldMap from "./WorldMap";
 
 function SingleCardPage() {
   const { id } = useParams();
@@ -52,6 +53,7 @@ function SingleCardPage() {
           showPhone={true}
           web={card.web}
           address={card.address}
+          map={<WorldMap />}
         />
       </div>
     </>

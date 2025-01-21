@@ -153,6 +153,7 @@ function Card(props) {
             </>
           )}
         </div>
+        {props.map && <div className="map-container">{props.map}</div>}
       </div>
     </>
   );
